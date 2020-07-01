@@ -47,7 +47,7 @@ body {
 
 // 页面视口
 .routerView{
-    // border: 1px solid red;
+    border: 1px solid red;
     box-sizing: border-box;
     height: calc(100% - 1.1rem);
 }

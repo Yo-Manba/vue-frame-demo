@@ -136,6 +136,7 @@ export default {
     mounted() {
         this.init();
     },
+    
     beforeDestroy() {
         this.bs.destroy();
     },
@@ -145,10 +146,11 @@ export default {
             this.bs = new BScroll(this.$refs.scroll, {
                 scrollY: true,
                 click: true,
+                startY: -600,
                 probeType: 3 // listening scroll hook
             });
             this._registerHooks(['scroll', 'scrollEnd'], pos => {
-                console.log('done');
+                // console.log(pos);
             });
         },
         clickHandler(item) {

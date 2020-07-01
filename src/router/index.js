@@ -8,8 +8,7 @@ import Mine from '../views/Mine'
 
 Vue.use(VueRouter)
 
-const routes = [
-    {
+const routes = [{
         path: '/',
         component: Chat
     },
@@ -30,7 +29,20 @@ const routes = [
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+        console.log("to: ", to)
+        console.log("from:", from)
+        console.log(savedPosition)
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return {
+                x: 0,
+                y: 0
+            }
+        }
+    }
 })
 
 export default router
