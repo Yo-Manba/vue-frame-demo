@@ -1,6 +1,9 @@
 <template>
+    <!-- 整体页面 -->
     <div id="app">
+        <!-- 一级页面视口 -->
         <router-view class="routerView" />
+         <!-- 底部导航栏 -->
         <div id="nav">
             <router-link replace to="/">
                 <div>
@@ -45,11 +48,15 @@ body {
     height: 100%;
 }
 
-// 页面视口
+// 一级页面视口
 .routerView{
-    border: 1px solid red;
-    box-sizing: border-box;
+    // border: 1px solid red;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: calc(100% - 1.1rem);
+    box-sizing: border-box;
 }
 
 // 底部导航栏
