@@ -3,6 +3,7 @@
     <div class="scroll-wrapper" ref="scroll">
         <div class="scroll-content">
             我的
+            <div class="scroll-item" v-for="(item, index) of 100" :key="index" >{{item}}</div>
         </div>
     </div>
 </template>
@@ -43,11 +44,11 @@ export default {
     .scroll-content
         min-height calc(100% + 1px)
         .scroll-item
-            height 50px
-            line-height 50px
-            font-size 24px
+            height 1rem
+            line-height 1rem
+            font-size .48rem
             font-weight bold
-            border-bottom 1px solid #eee
+            border-bottom .02rem solid #eee
             text-align center
             &:nth-child(2n)
                 background-color #f3f5f7

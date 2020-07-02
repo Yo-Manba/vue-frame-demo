@@ -28,18 +28,18 @@ const router = new VueRouter({
         console.log("to: ", to)
         console.log("from:", from)
         console.log(savedPosition)
-        if (savedPosition) {
-            return savedPosition
-        } else {
-            // return {
-            //     x: 0,
-            //     y: 0
-            // }
+        // if (savedPosition) {
+        //     return savedPosition
+        // } else {
+        //     // return {
+        //     //     x: 0,
+        //     //     y: 0
+        //     // }
 
-            return {
-                selector: false
-            }
-        }
+        //     return {
+        //         selector: false
+        //     }
+        // }
     }
 })
 

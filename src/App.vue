@@ -2,8 +2,10 @@
     <!-- 整体页面 -->
     <div id="app">
         <!-- 一级页面视口 -->
-        <router-view class="routerView" />
-         <!-- 底部导航栏 -->
+        <keep-alive :include="include" :max="8">
+            <router-view class="routerView" />
+        </keep-alive>
+        <!-- 底部导航栏 -->
         <div id="nav" class="border-top">
             <router-link replace to="/">
                 <div>
@@ -33,8 +35,17 @@
     </div>
 </template>
 
+<script>
+export default {
+    data() {
+        return {
+            include: ['Chat', 'Contacts', 'Discover', 'Mine']
+        };
+    }
+};
+</script>
+
 <style lang="less">
-    
 // 整体页面
 body {
     margin: 0;
@@ -45,11 +56,15 @@ body {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    width: 100%;
     height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 // 一级页面视口
-.routerView{
+.routerView {
     // border: 1px solid red;
     position: fixed;
     top: 0;
@@ -75,11 +90,11 @@ body {
     z-index: 99;
 
     a {
-        font-size: .24rem;
+        font-size: 0.24rem;
         color: #666;
 
-        .iconfont{
-            font-size: .42rem;
+        .iconfont {
+            font-size: 0.42rem;
             display: block;
             margin-bottom: 5px;
         }
@@ -89,6 +104,4 @@ body {
         }
     }
 }
-
-
 </style>

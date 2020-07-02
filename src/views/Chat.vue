@@ -1,9 +1,12 @@
 <template>
     <div class="scroll-wrapper" ref="scroll">
         <div class="scroll-content">
-            <div class="scroll-item" v-for="(item, index) in emojis" :key="index" @click="clickHandler(item)">{{ item }}</div>
+            <div class="scroll-item" v-for="(item, index) of 100" :key="index" @click="clickHandler(item)" >{{item}}</div>
         </div>
     </div>
+    <!-- <div class="aa">
+        <div class="scroll-item" v-for="(item, index) of 100" :key="index" @click="clickHandler(item)">{{ item }}</div>
+    </div> -->
 </template>
 
 <script>
@@ -84,7 +87,7 @@ export default {
                 '💪 ✨ 🔔 ✊ ✋',
                 '👇 👊 👍 👈 👆',
                 '😀 😁 😂 🤣 😃',
-                '😄 😅 😆 😉 😊',
+                '😄 😅 😆 😉 😊'
             ]
         };
     },
@@ -123,16 +126,34 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+// .aa
+//     position fixed
+//     top 0
+//     left 0
+//     width 100%
+//     min-height 101%
+//     overflow-y scroll
+// .scroll-item
+//     height 1rem
+//     line-height 1rem
+//     font-size 0.48rem
+//     font-weight bold
+//     border-bottom 0.02rem solid #eee
+//     text-align center
+//     &:nth-child(2n)
+//         background-color #f3f5f7
+//     &:nth-child(2n+1)
+//         background-color #42b983
 .scroll-wrapper
     overflow hidden
     .scroll-content
         min-height calc(100% + 1px)
         .scroll-item
-            height 50px
-            line-height 50px
-            font-size 24px
+            height 1rem
+            line-height 1rem
+            font-size 0.48rem
             font-weight bold
-            border-bottom 1px solid #eee
+            border-bottom 0.02rem solid #eee
             text-align center
             &:nth-child(2n)
                 background-color #f3f5f7
