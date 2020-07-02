@@ -1,20 +1,20 @@
-
 <template>
     <div class="scroll-wrapper" ref="scroll">
         <div class="scroll-content">
-            我的
+            <p class="scroll-item" v-for="(item, index) in 50" :key="index">ListDetail</p>
+            
         </div>
     </div>
 </template>
 
 <script>
-import BScroll from '@better-scroll/core';    
+import BScroll from '@better-scroll/core';
 export default {
-    name: "Mine",
+    name: 'ListDetail',
     data() {
         return {};
     },
-
+    
     mounted() {
         this.init();
     },
@@ -31,14 +31,33 @@ export default {
                 startY: 0,
                 probeType: 3 // listening scroll hook
             });
-            
+            this._registerHooks(['scroll', 'scrollEnd'], pos => {
+                // console.log(pos);
+            });
+        },
+        
+        _registerHooks(hookNames, handler) {
+            hookNames.forEach(name => {
+                this.bs.on(name, handler);
+            });
         }
-    }
+    },
+    
+    // watch: {
+    //     $route(to, from) {
+    //         // 对路由变化作出响应...
+    //         console.log(to);
+    //     }
+    // }
 };
 </script>
 
 <style lang="stylus" scoped>
 .scroll-wrapper
+    position relative
+    z-index 111
+    background-color #fff
+    height 100%
     overflow hidden
     .scroll-content
         min-height calc(100% + 1px)

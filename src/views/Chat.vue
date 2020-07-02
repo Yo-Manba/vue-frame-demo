@@ -110,7 +110,8 @@ export default {
             });
         },
         clickHandler(item) {
-            alert(item);
+            // alert(item);
+            this.$router.push({ name: 'listDetail', params: { info: item }})
         },
         _registerHooks(hookNames, handler) {
             hookNames.forEach(name => {
@@ -125,7 +126,7 @@ export default {
 .scroll-wrapper
     overflow hidden
     .scroll-content
-        min-height calc(100% + 0.01rem)
+        min-height calc(100% + 1px)
         .scroll-item
             height 50px
             line-height 50px

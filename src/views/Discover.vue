@@ -42,7 +42,7 @@ export default {
 .scroll-wrapper
     overflow hidden
     .scroll-content
-        min-height calc(100% + 0.01rem)
+        min-height calc(100% + 1px)
         .scroll-item
             height 50px
             line-height 50px

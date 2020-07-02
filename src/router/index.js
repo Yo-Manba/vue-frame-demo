@@ -1,29 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Chat from '../views/Chat'
-import Contacts from '../views/Contacts'
-import Discover from '../views/Discover'
-import Mine from '../views/Mine'
+// 一级页面
+import Chat from '../views/Chat.vue'
+import Contacts from '../views/Contacts.vue'
+import Discover from '../views/Discover.vue'
+import Mine from '../views/Mine.vue'
+
+// 二级页面
+import ListDetail from '../views/ListDetail.vue'
 
 Vue.use(VueRouter)
 
-const routes = [{
-        path: '/',
-        component: Chat
-    },
-    {
-        path: '/contacts',
-        component: Contacts
-    },
-    {
-        path: '/discover',
-        component: Discover
-    },
-    {
-        path: '/mine',
-        component: Mine
-    },
+const routes = [
+    { path: '/', component: Chat },
+    { path: '/contacts', component: Contacts },
+    { path: '/discover', component: Discover },
+    { path: '/mine', component: Mine },
+    { path: '/listDetail/:info', name: 'listDetail', component: ListDetail }
 ]
 
 const router = new VueRouter({
@@ -37,12 +31,22 @@ const router = new VueRouter({
         if (savedPosition) {
             return savedPosition
         } else {
+            // return {
+            //     x: 0,
+            //     y: 0
+            // }
+
             return {
-                x: 0,
-                y: 0
+                selector: false
             }
         }
     }
 })
+
+// router.beforeEach((to, from, next) => {
+//     console.log("to: ", to)
+//     console.log("from: ", from)
+//     next()
+// })
 
 export default router

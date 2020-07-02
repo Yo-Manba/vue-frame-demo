@@ -4,11 +4,11 @@
         <!-- 一级页面视口 -->
         <router-view class="routerView" />
          <!-- 底部导航栏 -->
-        <div id="nav">
+        <div id="nav" class="border-top">
             <router-link replace to="/">
                 <div>
                     <span class="iconfont iconweixin"></span>
-                    <div>微信</div>
+                    <div>首页</div>
                 </div>
             </router-link>
             <router-link replace to="/contacts">
