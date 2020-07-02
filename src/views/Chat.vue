@@ -121,6 +121,14 @@ export default {
                 this.bs.on(name, handler);
             });
         }
+    },
+    
+    watch: {
+        $route(to, from) {
+            // 对路由变化作出响应...
+            console.log(to);
+            this.bs.refresh();
+        }
     }
 };
 </script>
