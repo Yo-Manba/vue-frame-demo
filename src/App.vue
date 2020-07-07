@@ -2,9 +2,7 @@
     <!-- 整体页面 -->
     <div id="app">
         <!-- 一级页面视口 -->
-        <keep-alive :include="include" :max="8">
-            <router-view class="routerView" />
-        </keep-alive>
+        <keep-alive :include="include" :max="8"><router-view class="routerView" /></keep-alive>
         <!-- 底部导航栏 -->
         <div id="nav" class="border-top">
             <router-link replace to="/">

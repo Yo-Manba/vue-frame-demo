@@ -94,6 +94,8 @@ export default {
 
     mounted() {
         this.init();
+        console.log(this.$route)
+        console.log(this.$router)
     },
 
     beforeDestroy() {
@@ -124,11 +126,11 @@ export default {
     },
     
     watch: {
-        $route(to, from) {
-            // 对路由变化作出响应...
-            console.log(to);
-            this.bs.refresh();
-        }
+        // $route(to, from) {
+        //     // 对路由变化作出响应...
+        //     console.log(to);
+        //     this.bs.refresh();
+        // }
     }
 };
 </script>
