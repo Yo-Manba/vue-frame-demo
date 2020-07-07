@@ -94,8 +94,8 @@ export default {
 
     mounted() {
         this.init();
-        console.log(this.$route)
-        console.log(this.$router)
+        // console.log(this.$route)
+        // console.log(this.$router)
     },
 
     beforeDestroy() {
@@ -123,6 +123,14 @@ export default {
                 this.bs.on(name, handler);
             });
         }
+    },
+    
+    beforeRouteLeave(to, from, next) {
+        console.log("from: ", from)
+        console.log("to: ", to)
+        console.log("next: ", next)
+        
+        next()
     },
     
     watch: {
