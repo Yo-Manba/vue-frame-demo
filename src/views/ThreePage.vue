@@ -1,7 +1,8 @@
+
 <template>
     <div class="scroll-wrapper" ref="scroll">
         <div class="scroll-content">
-            <div class="scroll-item" v-for="(item, index) of 100" :key="index" >{{item}}</div>
+            <div class="scroll-item" v-for="(item, index) of 100" :key="index" >{{item}}三级页面</div>
         </div>
     </div>
 </template>
@@ -9,7 +10,7 @@
 <script>
 import BScroll from '@better-scroll/core';
 export default {
-    name: 'ListDetail',
+    name: "ThreePage",
     data() {
         return {};
     },
@@ -40,14 +41,7 @@ export default {
                 this.bs.on(name, handler);
             });
         }
-    },
-    
-    // watch: {
-    //     $route(to, from) {
-    //         // 对路由变化作出响应...
-    //         console.log(to);
-    //     }
-    // }
+    }
 };
 </script>
 

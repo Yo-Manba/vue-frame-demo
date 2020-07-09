@@ -1,8 +1,8 @@
 <template>
     <!-- 整体页面 -->
     <div id="app">
-        <!-- 一级页面视口 -->
-        <keep-alive :include="include" :max="8">
+        <!-- 页面视口 -->
+        <keep-alive :include="include">
             <router-view class="routerView" />
         </keep-alive>
         <!-- 底部导航栏 -->
@@ -39,8 +39,22 @@
 export default {
     data() {
         return {
-            include: ['Chat', 'Contacts', 'Discover', 'Mine']
+            
         };
+    },
+    mounted() {
+        this.init()
+    },
+    methods: {
+        init() {
+            // console.log(this.$store.state)
+        }
+    },
+    computed: {
+        include(){
+            console.log(this.$store.state.catch_components)
+            return this.$store.state.catch_components
+        } 
     }
 };
 </script>
