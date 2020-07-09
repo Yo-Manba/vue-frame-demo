@@ -14,6 +14,9 @@ import Sub2TowPage from '../views/Sub2TowPage'
 // 三级页面
 import ThreePage from '../views/ThreePage'
 
+// 四级页面
+import FourPage from '../views/FourPage'
+
 
 Vue.use(VueRouter)
 
@@ -25,6 +28,7 @@ const routes = [
     { path: '/towPage', name: 'towPage', component: TowPage, props: true },
     { path: '/threePage', name: 'threePage', component: ThreePage, props: true },
     { path: '/sub2TowPage', name: 'sub2TowPage', component: Sub2TowPage, props: true },
+    { path: '/fourPage', name: 'fourPage', component: FourPage, props: true },
 ]
 
 const router = new VueRouter({
