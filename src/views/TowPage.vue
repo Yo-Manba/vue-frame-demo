@@ -50,6 +50,7 @@ export default {
 
         toThreePage(item) {
             this.$router.push({ name: "threePage", params: { info: item } });
+            // this.$router.go(-1)
         }
     },
 
