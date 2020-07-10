@@ -1,14 +1,17 @@
 
 <template>
-    <div class="scroll-wrapper" ref="scroll">
-        <div class="scroll-content">
-            <div
-                class="scroll-item"
-                v-for="(item, index) of 100"
-                :key="index"
-                @click="toThreePage(item)"
-            >
-                {{ item }}二级页面
+    <div>
+        <Header :hasBack="true" :title="'二级页面'" />
+        <div class="scroll-wrapper" ref="scroll">
+            <div class="scroll-content">
+                <div
+                    class="scroll-item"
+                    v-for="(item, index) of 100"
+                    :key="index"
+                    @click="toThreePage(item)"
+                >
+                    {{ item }}二级页面
+                </div>
             </div>
         </div>
     </div>
@@ -16,10 +19,15 @@
 
 <script>
 import BScroll from "@better-scroll/core";
+import Header from '../components/Header';
+
 export default {
     name: "TowPage",
     data() {
         return {};
+    },
+    components: {
+        Header
     },
 
     mounted() {
@@ -38,9 +46,9 @@ export default {
                 startY: 0,
                 probeType: 3 // listening scroll hook
             });
-            
+
             this.bs.on("scrollEnd", pos => {
-            //    console.log(pos)
+                //    console.log(pos)
             });
         },
 
@@ -67,17 +75,19 @@ export default {
             next();
         }, 0);
     }
-
 };
 </script>
 
 <style lang="stylus" scoped>
 .scroll-wrapper {
-    position: relative;
-    z-index: 111;
-    background-color: #fff;
-    height: 100%;
+    position: fixed;
+    top: 1.1rem;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 1.1rem);
     overflow: hidden;
+    z-index 111
+    background-color #fff
 
     .scroll-content {
         min-height: calc(100% + 1px);

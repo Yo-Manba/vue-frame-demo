@@ -1,13 +1,16 @@
 <template>
-    <div class="scroll-wrapper" ref="scroll">
-        <div class="scroll-content">
-            <div
-                class="scroll-item"
-                v-for="(item, index) of 100"
-                :key="index"
-                @click="clickHandler(item)"
-            >
-                {{ item }}
+    <div>
+        <Header :hasBack="false" :title="'首页'" />
+        <div class="scroll-wrapper" ref="scroll">
+            <div class="scroll-content">
+                <div
+                    class="scroll-item"
+                    v-for="(item, index) of 100"
+                    :key="index"
+                    @click="clickHandler(item)"
+                >
+                    {{ item }}
+                </div>
             </div>
         </div>
     </div>
@@ -15,6 +18,7 @@
 
 <script>
 import BScroll from "@better-scroll/core";
+import Header from '../components/Header';
 
 export default {
     name: "Chat",
@@ -95,9 +99,12 @@ export default {
             ]
         };
     },
+    components: {
+        Header
+    },
 
     mounted() {
-        console.log("mounted")
+        console.log("mounted");
         this.init();
     },
 
@@ -106,7 +113,7 @@ export default {
     },
 
     activated() {
-        console.log("activated")
+        console.log("activated");
         this.bs.refresh();
     },
 
@@ -121,7 +128,7 @@ export default {
             });
 
             this.bs.on("scrollEnd", pos => {
-            //    console.log(pos)
+                //    console.log(pos)
             });
         },
 
@@ -129,13 +136,18 @@ export default {
             this.$router.push({ name: "towPage", params: { info: item } });
         }
     }
-
 };
 </script>
 
 <style lang="stylus" scoped>
 .scroll-wrapper {
+    position: fixed;
+    top: 1.1rem;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 2.2rem);
     overflow: hidden;
+    z-index 111
 
     .scroll-content {
         min-height: calc(100% + 1px);

@@ -21,14 +21,54 @@ import FourPage from '../views/FourPage'
 Vue.use(VueRouter)
 
 const routes = [
-    { path: '/', component: Chat },
-    { path: '/contacts', component: Contacts },
-    { path: '/discover', component: Discover },
-    { path: '/mine', component: Mine },
-    { path: '/towPage', name: 'towPage', component: TowPage, props: true },
-    { path: '/threePage', name: 'threePage', component: ThreePage, props: true },
-    { path: '/sub2TowPage', name: 'sub2TowPage', component: Sub2TowPage, props: true },
-    { path: '/fourPage', name: 'fourPage', component: FourPage, props: true },
+    // 一级页面
+    {
+        path: '/',
+        component: Chat
+    },
+    {
+        path: '/contacts',
+        component: Contacts
+    },
+    {
+        path: '/discover',
+        component: Discover
+    },
+    {
+        path: '/mine',
+        component: Mine
+    },
+
+    // 二级页面
+    {
+        path: '/towPage',
+        name: 'towPage',
+        component: TowPage,
+        props: true
+    },
+    {
+        path: '/sub2TowPage',
+        name: 'sub2TowPage',
+        component: Sub2TowPage,
+        props: true
+    },
+
+    // 三级页面
+    {
+        path: '/threePage',
+        name: 'threePage',
+        component: ThreePage,
+        props: true
+    },
+
+
+    // 四级页面
+    {
+        path: '/fourPage',
+        name: 'fourPage',
+        component: FourPage,
+        props: true
+    },
 ]
 
 const router = new VueRouter({

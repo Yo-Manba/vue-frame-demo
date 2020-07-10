@@ -3,7 +3,7 @@
     <div id="app">
         <!-- 页面视口 -->
         <keep-alive :include="include">
-            <router-view class="routerView" />
+            <router-view class="onePage" />
         </keep-alive>
         <!-- 底部导航栏 -->
         <div id="nav" class="border-top">
@@ -75,12 +75,8 @@ body {
 }
 
 // 一级页面视口
-.routerView {
+.onePage {
     // border: 1px solid red;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: calc(100% - 1.1rem);
     box-sizing: border-box;
 }

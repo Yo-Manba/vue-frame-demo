@@ -1,14 +1,17 @@
 
 <template>
-    <div class="scroll-wrapper" ref="scroll">
-        <div class="scroll-content">
-            <div
-                class="scroll-item"
-                v-for="(item, index) of 100"
-                :key="index"
-                @click="toFourPage(item)"
-            >
-                {{ item }}三级页面
+    <div>
+        <Header :hasBack="true" :title="'三级页面'" />
+        <div class="scroll-wrapper" ref="scroll">
+            <div class="scroll-content">
+                <div
+                    class="scroll-item"
+                    v-for="(item, index) of 100"
+                    :key="index"
+                    @click="toFourPage(item)"
+                >
+                    {{ item }}三级页面
+                </div>
             </div>
         </div>
     </div>
@@ -16,15 +19,20 @@
 
 <script>
 import BScroll from "@better-scroll/core";
+import Header from "../components/Header";
+
 export default {
     name: "ThreePage",
     data() {
         return {};
     },
+    components: {
+        Header
+    },
 
     mounted() {
         this.init();
-        console.log("执行mounted")
+        console.log("执行mounted");
     },
 
     beforeDestroy() {
@@ -39,16 +47,15 @@ export default {
                 startY: 0,
                 probeType: 3 // listening scroll hook
             });
-            
+
             this.bs.on("scrollEnd", pos => {
-            //    console.log(pos)
+                //    console.log(pos)
             });
         },
 
         toFourPage(item) {
             this.$router.push({ name: "fourPage", params: { info: item } });
         }
-
     },
 
     beforeRouteEnter(to, from, next) {
@@ -74,11 +81,14 @@ export default {
 
 <style lang="stylus" scoped>
 .scroll-wrapper {
-    position: relative;
-    z-index: 111;
-    background-color: #fff;
-    height: 100%;
+    position: fixed;
+    top: 1.1rem;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 1.1rem);
     overflow: hidden;
+    z-index 111
+    background-color #fff
 
     .scroll-content {
         min-height: calc(100% + 1px);
