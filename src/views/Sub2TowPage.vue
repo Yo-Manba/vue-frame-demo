@@ -38,14 +38,9 @@ export default {
                 startY: 0,
                 probeType: 3 // listening scroll hook
             });
-            this._registerHooks(["scroll", "scrollEnd"], pos => {
-                // console.log(pos);
-            });
-        },
-
-        _registerHooks(hookNames, handler) {
-            hookNames.forEach(name => {
-                this.bs.on(name, handler);
+            
+            this.bs.on("scrollEnd", pos => {
+            //    console.log(pos)
             });
         },
 
@@ -71,16 +66,8 @@ export default {
         setTimeout(() => {
             next();
         }, 0);
-    },
-
-    watch: {
-        // $route(to, from) {
-        // 对路由变化作出响应...
-        // console.log("from: ", from)
-        // console.log("to: ", to)
-        // console.log(this.$route);
-        // }
     }
+
 };
 </script>
 

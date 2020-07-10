@@ -36,9 +36,6 @@ const router = new VueRouter({
     base: process.env.BASE_URL,
     routes,
     scrollBehavior(to, from, savedPosition) {
-        // console.log("from: ", from)
-        // console.log("to: ", to)
-
         if (savedPosition) {
             return savedPosition
         } else {
@@ -49,11 +46,5 @@ const router = new VueRouter({
         }
     }
 })
-
-// router.beforeEach((to, from, next) => {
-//     console.log("to: ", to)
-//     console.log("from: ", from)
-//     next()
-// })
 
 export default router

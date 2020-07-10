@@ -43,18 +43,15 @@ export default {
         };
     },
     mounted() {
-        this.init()
+        
     },
     methods: {
-        init() {
-            // console.log(this.$store.state)
-        }
+        
     },
     computed: {
         include(){
-            console.log(this.$store.state.catch_components)
             return this.$store.state.catch_components
-        } 
+        }
     }
 };
 </script>

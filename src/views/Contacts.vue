@@ -104,6 +104,11 @@ export default {
         this.bs.destroy();
     },
 
+    activated() {
+        console.log("activated")
+        this.bs.refresh();
+    },
+
     methods: {
         init() {
             this.bs = new BScroll(this.$refs.scroll, {
@@ -112,19 +117,17 @@ export default {
                 startY: 0,
                 probeType: 3 // listening scroll hook
             });
-            this._registerHooks(["scroll", "scrollEnd"], pos => {
-                // console.log(pos);
+
+            this.bs.on("scrollEnd", pos => {
+            //    console.log(pos)
             });
         },
+
         clickHandler(item) {
             this.$router.push({ name: "sub2TowPage", params: { info: item } });
         },
-        _registerHooks(hookNames, handler) {
-            hookNames.forEach(name => {
-                this.bs.on(name, handler);
-            });
-        }
     }
+
 };
 </script>
 

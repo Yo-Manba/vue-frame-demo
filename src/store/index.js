@@ -17,6 +17,7 @@ export default new Vuex.Store({
         delComponent(state, data) {
             state.catch_components = state.catch_components.filter(x => x !== data);
         }
+
     },
     actions: {},
     modules: {}

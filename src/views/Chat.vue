@@ -97,6 +97,7 @@ export default {
     },
 
     mounted() {
+        console.log("mounted")
         this.init();
     },
 
@@ -104,27 +105,31 @@ export default {
         this.bs.destroy();
     },
 
+    activated() {
+        console.log("activated")
+        this.bs.refresh();
+    },
+
     methods: {
         init() {
+            // 实例化better-scroll
             this.bs = new BScroll(this.$refs.scroll, {
                 scrollY: true,
                 click: true,
                 startY: 0,
                 probeType: 3 // listening scroll hook
             });
-            this._registerHooks(["scroll", "scrollEnd"], pos => {
-                // console.log(pos);
+
+            this.bs.on("scrollEnd", pos => {
+            //    console.log(pos)
             });
         },
+
         clickHandler(item) {
             this.$router.push({ name: "towPage", params: { info: item } });
-        },
-        _registerHooks(hookNames, handler) {
-            hookNames.forEach(name => {
-                this.bs.on(name, handler);
-            });
         }
     }
+
 };
 </script>
 

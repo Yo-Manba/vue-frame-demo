@@ -24,6 +24,7 @@ export default {
 
     mounted() {
         this.init();
+        console.log("执行mounted")
     },
 
     beforeDestroy() {
@@ -38,14 +39,9 @@ export default {
                 startY: 0,
                 probeType: 3 // listening scroll hook
             });
-            this._registerHooks(["scroll", "scrollEnd"], pos => {
-                // console.log(pos);
-            });
-        },
-
-        _registerHooks(hookNames, handler) {
-            hookNames.forEach(name => {
-                this.bs.on(name, handler);
+            
+            this.bs.on("scrollEnd", pos => {
+            //    console.log(pos)
             });
         },
 
