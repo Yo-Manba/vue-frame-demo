@@ -23,19 +23,23 @@ const routes = [
     // 一级页面
     {
         path: '/',
-        component: Chat
+        component: Chat,
+        meta: { index: 1 },
     },
     {
         path: '/contacts',
-        component: Contacts
+        component: Contacts,
+        meta: { index: 1 },
     },
     {
         path: '/discover',
-        component: Discover
+        component: Discover,
+        meta: { index: 1 },
     },
     {
         path: '/mine',
-        component: Mine
+        component: Mine,
+        meta: { index: 1 },
     },
 
     // 二级页面
@@ -43,6 +47,7 @@ const routes = [
         path: '/towPage',
         name: 'towPage',
         component: TowPage,
+        meta: { index: 2 },
         props: true
     },
 
@@ -51,6 +56,7 @@ const routes = [
         path: '/threePage',
         name: 'threePage',
         component: ThreePage,
+        meta: { index: 3 },
         props: true
     },
 
@@ -60,6 +66,7 @@ const routes = [
         path: '/fourPage',
         name: 'fourPage',
         component: FourPage,
+        meta: { index: 4 },
         props: true
     },
 ]

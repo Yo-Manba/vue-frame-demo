@@ -21,7 +21,9 @@ import InnerPage from "../components/InnerPage";
 export default {
     name: "TowPage",
     data() {
-        return {};
+        return {
+            animateName: "slide-left"
+        };
     },
     components: {
         Header,

@@ -60,7 +60,6 @@ export default {
     height: calc(100% - 1.1rem);
     overflow: hidden;
     z-index 111
-    background-color #fff
 
     .scroll-content {
         min-height: calc(100% + 1px);

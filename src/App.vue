@@ -2,42 +2,94 @@
     <!-- 整体页面 -->
     <div id="app">
         <!-- 一级页面视口(包含Header高度) -->
-        <keep-alive :include="include">
-            <router-view class="onePage" />
-        </keep-alive>
+        <transition :name="transitionName">
+            <keep-alive :include="include">
+                <router-view class="onePage" />
+            </keep-alive>
+        </transition>
+
         <!-- 底部导航栏 -->
-        <BottomTabBar />
+        <BottomTabBar v-if="showBottomTabBar" />
     </div>
 </template>
 
 <script>
-import BottomTabBar from './components/BottomTabBar';
+import BottomTabBar from "./components/BottomTabBar";
 
 export default {
     data() {
         return {
-            
+            showBottomTabBar: true,
+            transitionName: "slide-left"
         };
     },
     components: {
         BottomTabBar
     },
 
-    mounted() {
-        
-    },
-    methods: {
-        
-    },
     computed: {
-        include(){
-            return this.$store.state.catch_components
+        include() {
+            return this.$store.state.catch_components;
+        }
+    },
+
+    mounted() {},
+
+    methods: {},
+
+    watch: {
+        $route(to, from) {
+            console.log(to);
+
+            if (
+                to.path === "/" ||
+                to.path === "/contacts" ||
+                to.path === "/discover" ||
+                to.path === "/mine"
+            ) {
+                this.showBottomTabBar = true;
+            } else {
+                this.showBottomTabBar = false;
+            }
+
+            // 如果to索引大于from索引,判断为前进状态,反之则为后退状态
+            if (to.meta.index > from.meta.index) {
+                this.transitionName = "slide-left";
+            } else if (to.meta.index == from.meta.index) {
+                this.transitionName = "";
+            } else {
+                this.transitionName = "slide-right";
+            }
         }
     }
 };
 </script>
 
 <style lang="less">
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+    // will-change: transform;
+    transition: all 0.5s;
+}
+.slide-right-enter {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+}
+
 // 整体页面
 body {
     margin: 0;
@@ -57,8 +109,7 @@ body {
 
 // 一级页面视口(包含Header高度)
 .onePage {
-    height: calc(100% - 1.1rem);
+    height: 100%;
     box-sizing: border-box;
 }
-
 </style>
