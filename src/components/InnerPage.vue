@@ -11,14 +11,12 @@
 import BScroll from "@better-scroll/core";
 
 export default {
-    name: "HomePage",
+    name: "InnerPage",
     data() {
-        return {
-            
-        };
+        return {};
     },
 
-    components: {},
+   components: {},
 
     computed: {},
 
@@ -34,9 +32,16 @@ export default {
         }
     },
 
+    created() {
+        console.log("created")
+    },
+
+    mouted() {
+        console.log("mounted");
+    },
+
     activated() {
         console.log("activated");
-        this.bs.refresh();
     },
 
     beforeDestroy() {
@@ -52,9 +57,10 @@ export default {
     top: 1.1rem;
     left: 0;
     width: 100%;
-    height: calc(100% - 2.2rem);
+    height: calc(100% - 1.1rem);
     overflow: hidden;
-    z-index: 111;
+    z-index 111
+    background-color #fff
 
     .scroll-content {
         min-height: calc(100% + 1px);

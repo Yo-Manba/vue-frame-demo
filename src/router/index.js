@@ -9,7 +9,6 @@ import Mine from '../views/Mine'
 
 // 二级页面
 import TowPage from '../views/TowPage'
-import Sub2TowPage from '../views/Sub2TowPage'
 
 // 三级页面
 import ThreePage from '../views/ThreePage'
@@ -44,12 +43,6 @@ const routes = [
         path: '/towPage',
         name: 'towPage',
         component: TowPage,
-        props: true
-    },
-    {
-        path: '/sub2TowPage',
-        name: 'sub2TowPage',
-        component: Sub2TowPage,
         props: true
     },
 
