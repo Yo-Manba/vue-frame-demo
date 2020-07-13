@@ -32,7 +32,6 @@ export default {
 
     mounted() {
         this.init();
-        console.log("执行mounted");
     },
 
     beforeDestroy() {

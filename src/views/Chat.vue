@@ -1,173 +1,45 @@
 <template>
     <div>
         <Header :hasBack="false" :title="'首页'" />
-        <div class="scroll-wrapper" ref="scroll">
-            <div class="scroll-content">
-                <div
-                    class="scroll-item"
-                    v-for="(item, index) of 100"
-                    :key="index"
-                    @click="clickHandler(item)"
-                >
-                    {{ item }}
-                </div>
-            </div>
-        </div>
+        <HomePage ref="homePage" />
     </div>
 </template>
 
 <script>
-import BScroll from "@better-scroll/core";
 import Header from '../components/Header';
+import HomePage from '../components/HomePage';
 
 export default {
     name: "Chat",
     data() {
         return {
-            emojis: [
-                "😀 😁 😂 🤣 😃",
-                "😄 😅 😆 😉 😊",
-                "😫 😴 😌 😛 😜",
-                "👆🏻 😒 😓 😔 👇🏻",
-                "😑 😶 🙄 😏 😣",
-                "😞 😟 😤 😢 😭",
-                "🤑 😲 ☹️ 🙁 😖",
-                "👍 👎 👊 ✊ 🤛",
-                "☝️ ✋ 🤚 🖐 🖖",
-                "👍🏼 👎🏼 👊🏼 ✊🏼 🤛🏼",
-                "☝🏽 ✋🏽 🤚🏽 🖐🏽 🖖🏽",
-                "🌖 🌗 🌘 🌑 🌒",
-                "💫 💥 💢 💦 💧",
-                "🐠 🐟 🐬 🐳 🐋",
-                "😬 😐 😕 😯 😶",
-                "😇 😏 😑 😓 😵",
-                "🐥 🐣 🐔 🐛 🐤",
-                "💪 ✨ 🔔 ✊ ✋",
-                "👇 👊 👍 👈 👆",
-                "😀 😁 😂 🤣 😃",
-                "😄 😅 😆 😉 😊",
-                "😫 😴 😌 😛 😜",
-                "👆🏻 😒 😓 😔 👇🏻",
-                "😑 😶 🙄 😏 😣",
-                "😞 😟 😤 😢 😭",
-                "😀 😁 😂 🤣 😃",
-                "😄 😅 😆 😉 😊",
-                "😫 😴 😌 😛 😜",
-                "👆🏻 😒 😓 😔 👇🏻",
-                "😑 😶 🙄 😏 😣",
-                "😞 😟 😤 😢 😭",
-                "🤑 😲 ☹️ 🙁 😖",
-                "👍 👎 👊 ✊ 🤛",
-                "☝️ ✋ 🤚 🖐 🖖",
-                "👍🏼 👎🏼 👊🏼 ✊🏼 🤛🏼",
-                "☝🏽 ✋🏽 🤚🏽 🖐🏽 🖖🏽",
-                "🌖 🌗 🌘 🌑 🌒",
-                "💫 💥 💢 💦 💧",
-                "🐠 🐟 🐬 🐳 🐋",
-                "😬 😐 😕 😯 😶",
-                "😇 😏 😑 😓 😵",
-                "🐥 🐣 🐔 🐛 🐤",
-                "💪 ✨ 🔔 ✊ ✋",
-                "👇 👊 👍 👈 👆",
-                "😀 😁 😂 🤣 😃",
-                "😄 😅 😆 😉 😊",
-                "😫 😴 😌 😛 😜",
-                "👆🏻 😒 😓 😔 👇🏻",
-                "😑 😶 🙄 😏 😣",
-                "😞 😟 😤 😢 😭",
-                "😀 😁 😂 🤣 😃",
-                "😄 😅 😆 😉 😊",
-                "😫 😴 😌 😛 😜",
-                "👆🏻 😒 😓 😔 👇🏻",
-                "😑 😶 🙄 😏 😣",
-                "😞 😟 😤 😢 😭",
-                "🤑 😲 ☹️ 🙁 😖",
-                "👍 👎 👊 ✊ 🤛",
-                "☝️ ✋ 🤚 🖐 🖖",
-                "👍🏼 👎🏼 👊🏼 ✊🏼 🤛🏼",
-                "☝🏽 ✋🏽 🤚🏽 🖐🏽 🖖🏽",
-                "🌖 🌗 🌘 🌑 🌒",
-                "💫 💥 💢 💦 💧",
-                "🐠 🐟 🐬 🐳 🐋",
-                "😬 😐 😕 😯 😶",
-                "😇 😏 😑 😓 😵",
-                "🐥 🐣 🐔 🐛 🐤",
-                "💪 ✨ 🔔 ✊ ✋",
-                "👇 👊 👍 👈 👆",
-                "😀 😁 😂 🤣 😃",
-                "😄 😅 😆 😉 😊"
-            ]
+            
         };
     },
     components: {
-        Header
-    },
-
-    mounted() {
-        console.log("mounted");
-        this.init();
-    },
-
-    beforeDestroy() {
-        this.bs.destroy();
-    },
-
-    activated() {
-        console.log("activated");
-        this.bs.refresh();
+        Header,
+        HomePage
     },
 
     methods: {
-        init() {
-            // 实例化better-scroll
-            this.bs = new BScroll(this.$refs.scroll, {
-                scrollY: true,
-                click: true,
-                startY: 0,
-                probeType: 3 // listening scroll hook
-            });
 
-            this.bs.on("scrollEnd", pos => {
-                //    console.log(pos)
-            });
-        },
+    },
 
-        clickHandler(item) {
-            this.$router.push({ name: "towPage", params: { info: item } });
-        }
+    mounted() {
+        console.log("mounted")
+        this.$refs.homePage.init()
+    },
+
+    activated() {
+        console.log("activated")
+    },
+
+    beforeDestroy() {
+        console.log("beforeDestroy")
     }
 };
 </script>
 
 <style lang="stylus" scoped>
-.scroll-wrapper {
-    position: fixed;
-    top: 1.1rem;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 2.2rem);
-    overflow: hidden;
-    z-index 111
 
-    .scroll-content {
-        min-height: calc(100% + 1px);
-
-        .scroll-item {
-            height: 1rem;
-            line-height: 1rem;
-            font-size: 0.48rem;
-            font-weight: bold;
-            border-bottom: 0.02rem solid #eee;
-            text-align: center;
-
-            &:nth-child(2n) {
-                background-color: #f3f5f7;
-            }
-
-            &:nth-child(2n+1) {
-                background-color: #42b983;
-            }
-        }
-    }
-}
 </style>
