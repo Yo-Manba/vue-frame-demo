@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             showBottomTabBar: true,
-            transitionName: "slide-left"
+            transitionName: ""
         };
     },
     components: {
@@ -71,24 +71,35 @@ export default {
 .slide-left-enter-active,
 .slide-left-leave-active {
     // will-change: transform;
-    transition: all 0.5s;
+    transition: all .7s;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    box-shadow: 0 0 10px #000;
+
 }
-.slide-right-enter {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
-}
-.slide-right-leave-active {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
-}
+
 .slide-left-enter {
-    opacity: 0;
     transform: translate3d(100%, 0, 0);
+    
 }
+
 .slide-left-leave-active {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-25%, 0, 0);
+    
 }
+
+.slide-right-leave-active {
+    transform: translate3d(100%, 0, 0);
+    z-index: 100;
+    
+}
+
+.slide-right-enter {
+    transform: translate3d(-25%, 0, 0);
+    z-index: 1;
+}
+
 
 // 整体页面
 body {
