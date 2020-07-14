@@ -2,14 +2,26 @@
     <div>
         <Header :hasBack="false" :title="'首页'" />
         <HomePage ref="homePage">
-            <div
+            <!-- <div
                 class="scroll-item"
                 v-for="(item, index) of 100"
                 :key="index"
                 @click="clickHandler(item)"
             >
                 {{ item }}
+            </div> -->
+
+            <div>
+                <van-button class="aa" type="default" @click="clickHandler">默认按钮</van-button>
+                <van-button class="aa" type="primary">主要按钮</van-button>
+                <van-button class="aa" type="info">信息按钮</van-button>
+                <van-button class="aa" type="warning">警告按钮</van-button>
+                <van-button class="aa" type="danger">危险按钮</van-button>
             </div>
+            
+
+            <van-image width="100" height="100" fit="cover" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+
         </HomePage>
     </div>
 </template>
@@ -54,6 +66,17 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.van-button--normal {
+    padding: 0 .3rem;
+    font-size: .28rem;
+}
+
+// .aa{
+//     border .01rem solid red
+//     width 1rem
+//     height 1rem
+// }
+
 .scroll-item {
     height: 1rem;
     line-height: 1rem;
