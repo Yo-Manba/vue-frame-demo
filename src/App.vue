@@ -70,35 +70,33 @@ export default {
 .slide-right-leave-active,
 .slide-left-enter-active,
 .slide-left-leave-active {
-    // will-change: transform;
-    transition: all .7s;
+    transition: all .4s;
     position: absolute;
     width: 100%;
     left: 0;
     box-shadow: 0 0 10px #000;
-
 }
 
 .slide-left-enter {
     transform: translate3d(100%, 0, 0);
-    
+    box-shadow: 0 0 10px #000;
 }
-
 .slide-left-leave-active {
     transform: translate3d(-25%, 0, 0);
-    
-}
-
-.slide-right-leave-active {
-    transform: translate3d(100%, 0, 0);
-    z-index: 100;
-    
+    box-shadow: 0 0 10px #000;
 }
 
 .slide-right-enter {
     transform: translate3d(-25%, 0, 0);
+    box-shadow: 0 0 10px #000;
+    z-index: -1;
+}
+.slide-right-leave-active {
+    transform: translate3d(100%, 0, 0);
+    box-shadow: 0 0 10px #000;
     z-index: 1;
 }
+
 
 
 // 整体页面
