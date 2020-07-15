@@ -7,8 +7,8 @@
             <van-cell class="cell" title="日历" is-link @click="toCalendar" />
             <van-cell class="cell" title="数字键盘" is-link @click="toNumberKeyboard" />
             <van-cell class="cell" title="滑块" is-link @click="toSlider" />
-            <van-cell class="cell" title="单元格" is-link @click="" />
-            <van-cell class="cell" title="单元格" is-link @click="" />
+            <van-cell class="cell" title="单元格" is-link />
+            <van-cell class="cell" title="单元格" is-link />
         </HomePage>
     </div>
 </template>
