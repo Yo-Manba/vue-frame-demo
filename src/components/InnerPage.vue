@@ -59,6 +59,7 @@ export default {
     width: 100%;
     height: calc(100% - 1.1rem);
     overflow: hidden;
+    background-color #fff
     z-index 111
 
     .scroll-content {

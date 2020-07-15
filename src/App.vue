@@ -65,7 +65,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="stylus">
 .slide-right-enter-active,
 .slide-right-leave-active,
 .slide-left-enter-active,
@@ -74,7 +74,7 @@ export default {
     position: absolute;
     width: 100%;
     left: 0;
-    box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 .1rem #ccc;
 }
 
 .slide-left-enter {

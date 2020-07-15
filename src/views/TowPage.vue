@@ -2,14 +2,7 @@
     <div>
         <Header :hasBack="true" :title="'二级页面'" />
         <InnerPage ref="innerPage">
-            <div
-                class="scroll-item"
-                v-for="(item, index) of 100"
-                :key="index"
-                @click="toThreePage(item)"
-            >
-                {{ item }}二级页面
-            </div>
+            fdsal
         </InnerPage>
     </div>
 </template>
@@ -22,7 +15,6 @@ export default {
     name: "TowPage",
     data() {
         return {
-            animateName: "slide-left"
         };
     },
     components: {
@@ -33,7 +25,9 @@ export default {
     methods: {
         toThreePage(item) {
             this.$router.push({ name: "threePage", params: { info: item } });
-        }
+        },
+
+
     },
 
     mounted() {
@@ -71,6 +65,13 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+
+.van-popup--bottom {
+    min-height: 4rem;
+    border-top-left-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
+}
+
 .scroll-item {
     height: 1rem;
     line-height: 1rem;
