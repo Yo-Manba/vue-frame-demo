@@ -39,7 +39,7 @@ export default {
 
     watch: {
         $route(to, from) {
-            console.log(to);
+            // console.log(to);
 
             if (
                 to.path === "/" ||

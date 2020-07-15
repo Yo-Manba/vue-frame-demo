@@ -35,12 +35,12 @@ export default {
     },
 
     activated() {
-        console.log("activated");
+        // console.log("activated");
         this.bs.refresh();
     },
 
     beforeDestroy() {
-        console.log("beforeDestroy")
+        // console.log("beforeDestroy")
         this.bs.destroy();
     }
 };

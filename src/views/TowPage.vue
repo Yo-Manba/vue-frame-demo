@@ -26,8 +26,6 @@ export default {
         toThreePage(item) {
             this.$router.push({ name: "threePage", params: { info: item } });
         },
-
-
     },
 
     mounted() {
@@ -36,11 +34,7 @@ export default {
     },
 
     activated() {
-        console.log("activated");
-    },
-
-    beforeDestroy() {
-        console.log("beforeDestroy");
+        // console.log("activated");
     },
 
     beforeRouteEnter(to, from, next) {

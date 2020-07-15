@@ -9,6 +9,10 @@ import Mine from '../views/Mine'
 
 // 二级页面
 import TowPage from '../views/TowPage'
+import Calendar from '../views/Calendar'
+import NumberKeyboard from '../views/NumberKeyboard'
+import Slider from '../views/Slider'
+
 
 // 三级页面
 import ThreePage from '../views/ThreePage'
@@ -47,6 +51,27 @@ const routes = [
         path: '/towPage',
         name: 'towPage',
         component: TowPage,
+        meta: { index: 2 },
+        props: true
+    },
+    {
+        path: '/calendar',
+        name: 'calendar',
+        component: Calendar,
+        meta: { index: 2 },
+        props: true
+    },
+    {
+        path: '/numberKeyboard',
+        name: 'numberKeyboard',
+        component: NumberKeyboard,
+        meta: { index: 2 },
+        props: true
+    },
+    {
+        path: '/slider',
+        name: 'slider',
+        component: Slider,
         meta: { index: 2 },
         props: true
     },

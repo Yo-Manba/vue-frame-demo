@@ -9,8 +9,8 @@
         </router-link>
         <router-link replace to="/contacts">
             <div>
-                <span class="iconfont icontongxunlu"></span>
-                <div>通讯录</div>
+                <span class="iconfont iconzujian"></span>
+                <div>组件</div>
             </div>
         </router-link>
         <router-link replace to="/discover">

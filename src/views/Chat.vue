@@ -17,7 +17,6 @@
                 height="100"
                 fit="cover"
                 src="https://img.yzcdn.cn/vant/cat.jpeg"
-                
             />
 
             <van-cell is-link @click="showPopup">展示弹出层</van-cell>
@@ -27,8 +26,7 @@
         <van-popup v-model="show" position="bottom">
             <div v-for="(item, index) of 100" :key="index">啥客户</div>
         </van-popup>
-        
-
+    
     </div>
 </template>
 
@@ -78,7 +76,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
 // 按钮
 .van-button--normal {
     padding: 0 0.3rem;
@@ -86,28 +83,11 @@ export default {
 }
 
 // 弹出层
-.van-popup--bottom{
-    height 8rem
-    border-top-left-radius .2rem
-    border-top-right-radius .2rem
-    padding .2rem
-    box-sizing border-box
-}
-
-.scroll-item {
-    height: 1rem;
-    line-height: 1rem;
-    font-size: 0.48rem;
-    font-weight: bold;
-    border-bottom: 0.02rem solid #eee;
-    text-align: center;
-
-    &:nth-child(2n) {
-        background-color: #f3f5f7;
-    }
-
-    &:nth-child(2n+1) {
-        background-color: #42b983;
-    }
+.van-popup--bottom {
+    height: 8rem;
+    border-top-left-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
+    padding: 0.2rem;
+    box-sizing: border-box;
 }
 </style>

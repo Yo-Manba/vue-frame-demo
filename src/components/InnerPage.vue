@@ -33,19 +33,19 @@ export default {
     },
 
     created() {
-        console.log("created")
+        // console.log("created")
     },
 
     mouted() {
-        console.log("mounted");
+        // console.log("mounted");
     },
 
     activated() {
-        console.log("activated");
+        // console.log("activated");
     },
 
     beforeDestroy() {
-        console.log("beforeDestroy")
+        // console.log("beforeDestroy")
         this.bs.destroy();
     }
 };
