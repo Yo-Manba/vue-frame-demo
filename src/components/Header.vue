@@ -31,7 +31,7 @@ export default {
 
 <style lang='stylus' scoped>
 .header
-    height 1.1rem
+    height 1rem
     background-color #f5f5f5
     text-align center
     display flex

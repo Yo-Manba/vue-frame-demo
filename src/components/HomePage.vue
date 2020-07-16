@@ -49,10 +49,10 @@ export default {
 <style lang="stylus" scoped>
 .scroll-wrapper {
     position: fixed;
-    top: 1.1rem;
+    top: 1rem;
     left: 0;
     width: 100%;
-    height: calc(100% - 2.2rem);
+    height: calc(100% - 2.1rem);
     overflow: hidden;
     z-index: 111;
 
