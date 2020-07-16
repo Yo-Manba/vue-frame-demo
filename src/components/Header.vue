@@ -50,9 +50,9 @@ export default {
         display flex
         align-items center
         justify-content center
-        font-size .32rem
+        font-size .30rem
     
     .title
-        font-size .34rem
+        font-size .31rem
 
 </style>
