@@ -12,6 +12,7 @@ import TowPage from '../views/TowPage'
 import Calendar from '../views/Calendar'
 import NumberKeyboard from '../views/NumberKeyboard'
 import Slider from '../views/Slider'
+import Uploader from '../views/Uploader'
 
 
 // 三级页面
@@ -72,6 +73,13 @@ const routes = [
         path: '/slider',
         name: 'slider',
         component: Slider,
+        meta: { index: 2 },
+        props: true
+    },
+    {
+        path: '/uploader',
+        name: 'uploader',
+        component: Uploader,
         meta: { index: 2 },
         props: true
     },

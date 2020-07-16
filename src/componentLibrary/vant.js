@@ -27,3 +27,7 @@ Vue.use(NumberKeyboard);
 // 滑块
 import { Slider } from 'vant';
 Vue.use(Slider);
+
+// 文件上传
+import { Uploader } from 'vant';
+Vue.use(Uploader);

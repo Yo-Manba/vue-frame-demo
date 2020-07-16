@@ -5,9 +5,19 @@
         <HomePage ref="homePage">
             <div style="height: .01rem"></div>
             <van-cell class="cell" title="日历" is-link @click="toCalendar" />
-            <van-cell class="cell" title="数字键盘" is-link @click="toNumberKeyboard" />
+            <van-cell
+                class="cell"
+                title="数字键盘"
+                is-link
+                @click="toNumberKeyboard"
+            />
             <van-cell class="cell" title="滑块" is-link @click="toSlider" />
-            <van-cell class="cell" title="单元格" is-link />
+            <van-cell
+                class="cell"
+                title="文件上传"
+                is-link
+                @click="toUploader"
+            />
             <van-cell class="cell" title="单元格" is-link />
         </HomePage>
     </div>
@@ -20,9 +30,7 @@ import HomePage from "../components/HomePage";
 export default {
     name: "Contacts",
     data() {
-        return {
-            
-        };
+        return {};
     },
     components: {
         Header,
@@ -31,7 +39,7 @@ export default {
 
     methods: {
         toCalendar() {
-            this.$router.push({ name: "calendar", params: { info: '' } });
+            this.$router.push({ name: "calendar", params: { info: "" } });
         },
 
         toNumberKeyboard() {
@@ -40,6 +48,10 @@ export default {
 
         toSlider() {
             this.$router.push({ name: "slider" });
+        },
+
+        toUploader() {
+            this.$router.push({ name: "uploader" });
         }
     },
 
@@ -52,21 +64,21 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.cell{
-    width 94%
-    margin 0 auto
-    margin-top .2rem
-    height 1rem
-    padding 0 .3rem
-    border-radius .5rem
-    background-color #f7f7f7
+.cell {
+    width: 94%;
+    margin: 0 auto;
+    margin-top: 0.2rem;
+    height: 1rem;
+    padding: 0 0.3rem;
+    border-radius: 0.5rem;
+    background-color: #f7f7f7;
 }
 
-.van-cell__title{
-    line-height 1rem
+.van-cell__title {
+    line-height: 1rem;
 }
 
-.van-cell__right-icon{
-    line-height 1rem
+.van-cell__right-icon {
+    line-height: 1rem;
 }
 </style>

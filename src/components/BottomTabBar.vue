@@ -3,7 +3,7 @@
     <div id="nav" class="border-top">
         <router-link replace to="/">
             <div>
-                <span class="iconfont iconweixin"></span>
+                <span class="iconfont iconzhuyequan"></span>
                 <div>首页</div>
             </div>
         </router-link>
@@ -15,8 +15,8 @@
         </router-link>
         <router-link replace to="/discover">
             <div>
-                <span class="iconfont iconzhinanzhen"></span>
-                <div>发现</div>
+                <span class="iconfont iconicon_huabanfuben"></span>
+                <div>数据</div>
             </div>
         </router-link>
         <router-link replace to="/mine">
