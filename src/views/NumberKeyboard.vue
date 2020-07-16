@@ -13,7 +13,10 @@
                 @delete="onDelete"
             />
 
-            <van-cell @touchstart.native.stop="show2 = true">
+            <input class="inpt" type="text">
+
+
+            <!-- <van-cell @touchstart.native.stop="show2 = true">
                 带右侧栏的键盘， 将 theme 属性设置为 custom
                 来展示键盘的右侧栏，常用于输入金额的场景
             </van-cell>
@@ -54,7 +57,7 @@
                 @blur="show4 = false"
                 @input="onInput"
                 @delete="onDelete"
-            />
+            /> -->
         </InnerPage>
     </div>
 </template>
@@ -120,4 +123,15 @@ export default {
 </script>
 
 <style lang='less' scoped>
+.inpt{
+    width: 90%;
+    height: .9rem;
+    border-radius: .2rem;
+    background-color: #f5f5f5;
+    padding: 0 .2rem;
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto;
+    margin-top: .5rem;
+}
 </style>
