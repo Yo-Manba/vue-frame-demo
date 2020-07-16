@@ -45,29 +45,55 @@ export default {
         },
 
         getInfo() {
-            axios.post(`api/api/c/job/list`, {
-                type: 2,
-            	page: 1,
-            	size: 20
-            }).then( res => {
-                console.log(res)
-                if(res.data.code === "1"){
-                    if(res.data.result){
-                        var result = res.data.result
-                        this.info = result
-                        setTimeout(() => {
-                            this.$refs.homePage.bs.refresh()
-                        }, 0)
-                    }else{
-                        console.log("无返回数据")
-                    }
-                }else{  
-                    console.log(res.data.msg)
-                }
-            }).catch( err => {
-                console.error(err)
-            })
+            // axios.post(`api/api/c/job/list`, {
+            //     type: 2,
+            //     page: 1,
+            //     size: 20
+            // }).then(res => {
+            //     console.log(res);
+            //     if (res.data.code === "1") {
+            //         if (res.data.result) {
+            //             var result = res.data.result;
+            //             this.info = result;
+            //             setTimeout(() => {
+            //                 this.$refs.homePage.bs.refresh();
+            //             }, 0);
+            //         } else {
+            //             console.log("无返回数据");
+            //         }
+            //     } else {
+            //         console.log(res.data.msg);
+            //     }
+            // }).catch(err => {
+            //     console.error(err);
+            // });
 
+            axios({
+                url: "api/api/c/job/list",
+                method: "post",
+                data: {
+                    type: 2,
+                    page: 1,
+                    size: 20
+                }
+            }).then(res => {
+                console.log(res);
+                if (res.data.code === "1") {
+                    if (res.data.result) {
+                        var result = res.data.result;
+                        this.info = result;
+                        setTimeout(() => {
+                            this.$refs.homePage.bs.refresh();
+                        }, 0);
+                    } else {
+                        console.log("无返回数据");
+                    }
+                } else {
+                    console.log(res.data.msg);
+                }
+            }).catch(err => {
+                console.error(err);
+            });
         }
     },
 
@@ -87,12 +113,12 @@ export default {
 
 <style lang="stylus" scoped>
 .scroll-item {
-    width 90%
-    margin 0 auto
-    margin-top .8rem
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 0.8rem;
 }
 
 .scroll-item div {
-    margin-top .1rem
+    margin-top: 0.1rem;
 }
 </style>
