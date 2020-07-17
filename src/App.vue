@@ -81,11 +81,11 @@ export default {
     transform: translate3d(100%, 0, 0);
 }
 .slide-left-leave-active {
-    transform: translate3d(-25%, 0, 0);
+    transform: translate3d(-35%, 0, 0);
 }
 
 .slide-right-enter {
-    transform: translate3d(-25%, 0, 0);
+    transform: translate3d(-35%, 0, 0);
     z-index: -1;
 }
 .slide-right-leave-active {
