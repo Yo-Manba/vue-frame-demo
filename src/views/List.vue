@@ -2,9 +2,9 @@
 <template>
     <div>
         <Header :hasBack="true" :title="'Pulldown and Pullup'" />
-        <InnerPage ref="innerPage" :pulldown="true">
+        <InnerPage ref="innerPage" :pulldown="true" :pullup="true" :pullupTxt="true">
             <ul class="pulldown-list">
-                <li v-for="i of 5" :key="i" class="pulldown-list-item">
+                <li v-for="i of 100" :key="i" class="pulldown-list-item">
                     {{ `I am item ${i} ` }}
                 </li>
             </ul>
@@ -17,13 +17,10 @@ import Header from "../components/Header";
 import InnerPage from "../components/InnerPage";
 import { Toast } from "vant";
 
-
 export default {
     name: "Refresh",
     data() {
-        return {
-            
-        };
+        return {};
     },
 
     components: {
@@ -34,16 +31,31 @@ export default {
     computed: {},
 
     methods: {
+        /**
+         * 页面相关事件处理函数--监听用户下拉动作
+         */
+        async onPullDownRefresh() {
+            console.log("onPullDownRefresh");
 
-        // 下拉刷新回调
-        async requestData() {
-            console.log(121)
             return new Promise(resolve => {
                 setTimeout(() => {
                     resolve();
                 }, 800);
             });
         },
+
+        /**
+         * 页面上拉触底事件的处理函数
+         */
+        async onReachBottom() {
+            console.log("onReachBottom");
+
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(false);
+                }, 1800);
+            });
+        }
     },
 
     mounted() {
