@@ -3,13 +3,13 @@
     <div class="scroll-wrapper" ref="scroll">
         <div class="scroll-content">
             <!-- 下拉加载模块 -->
-            <!-- <div v-if="pulldown" class="pulldown-wrapper">
+            <div v-if="pulldown" class="pulldown-wrapper">
                 <div v-show="beforePullDown"><span>下拉刷新</span></div>
                 <div v-show="!beforePullDown">
                     <div v-show="isPullingDown"><span>加载中...</span></div>
                     <div v-show="!isPullingDown"><span>刷新成功</span></div>
                 </div>
-            </div> -->
+            </div>
             <!-- 页面插槽 -->
             <slot />
         </div>
@@ -18,8 +18,8 @@
 
 <script>
 import BScroll from "@better-scroll/core";
-// import PullDown from "@better-scroll/pull-down";
-// BScroll.use(PullDown);
+import PullDown from "@better-scroll/pull-down";
+BScroll.use(PullDown);
 
 export default {
     name: "InnerPage",
@@ -28,12 +28,12 @@ export default {
     ],
     data() {
         return {
-            // beforePullDown: true,
-            // isPullingDown: false,
-            // TIME_BOUNCE: 800,
-            // TIME_STOP: 600,
-            // THRESHOLD: 70,
-            // STOP: 56
+            beforePullDown: true,
+            isPullingDown: false,
+            TIME_BOUNCE: 800,
+            TIME_STOP: 600,
+            THRESHOLD: 90,
+            STOP: 56
         };
     },
 
@@ -50,31 +50,42 @@ export default {
                 startY: 0,
                 probeType: 3, // listening scroll hook
 
-                // bounceTime: this.TIME_BOUNCE,
-                // pullDownRefresh: this.pulldown ? {
-                //     threshold: this.THRESHOLD,
-                //     stop: this.STOP
-                // } : false
+                bounceTime: this.TIME_BOUNCE,
+                pullDownRefresh: this.pulldown ? {
+                    threshold: this.THRESHOLD,
+                    stop: this.STOP
+                } : false
             });
-
-            // if(this.pulldown) {
-            //     this.bs.on("pullingDown", this.$parent.pullingDownHandler);
-            // };
+            
+            // 监听下拉刷新
+            if(this.pulldown) {
+                this.bs.on("pullingDown", this.pullingDownHandler);
+            };
         },
 
-        // async finishPullDown() {
-        //     const stopTime = this.TIME_STOP;
-        //     await new Promise(resolve => {
-        //         setTimeout(() => {
-        //             this.bs.finishPullDown();
-        //             resolve();
-        //         }, stopTime);
-        //     });
-        //     setTimeout(() => {
-        //         this.beforePullDown = true;
-        //         this.bs.refresh();
-        //     }, this.TIME_BOUNCE);
-        // }
+        // 下拉刷新模块****************************************************************************************************************
+        async pullingDownHandler() {
+            this.beforePullDown = false;
+            this.isPullingDown = true;
+            await this.$parent.requestData();
+            this.isPullingDown = false;
+            this.finishPullDown();
+        },
+
+        async finishPullDown() {
+            const stopTime = this.TIME_STOP;
+            await new Promise(resolve => {
+                setTimeout(() => {
+                    this.bs.finishPullDown();
+                    resolve();
+                }, stopTime);
+            });
+            setTimeout(() => {
+                this.beforePullDown = true;
+                this.bs.refresh();
+            }, this.TIME_BOUNCE);
+        }
+        // ****************************************************************************************************************************
         
     },
 
@@ -109,17 +120,18 @@ export default {
     z-index: 111;
 
     .scroll-content {
-        min-height: calc(100% + 1px);
+        min-height: calc(100% + .03rem);
 
-        // .pulldown-wrapper {
-        //     position: absolute;
-        //     transform: translateY(-100%) translateZ(0);
-        //     width: 100%;
-        //     padding: 20px;
-        //     text-align: center;
-        //     color: #999;
-        //     box-sizing: border-box;
-        // }
+        // 下拉加载模块
+        .pulldown-wrapper {
+            position: absolute;
+            transform: translateY(-100%) translateZ(0);
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            box-sizing: border-box;
+        }
     }
 }
 </style>

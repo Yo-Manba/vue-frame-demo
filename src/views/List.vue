@@ -3,12 +3,11 @@
     <div>
         <Header :hasBack="true" :title="'Pulldown and Pullup'" />
         <InnerPage ref="innerPage" :pulldown="true">
-            开放两块
-            <!-- <ul class="pulldown-list">
+            <ul class="pulldown-list">
                 <li v-for="i of 5" :key="i" class="pulldown-list-item">
                     {{ `I am item ${i} ` }}
                 </li>
-            </ul> -->
+            </ul>
         </InnerPage>
     </div>
 </template>
@@ -37,21 +36,14 @@ export default {
     methods: {
 
         // 下拉刷新回调
-        // async pullingDownHandler() {
-        //     this.$refs.innerPage.beforePullDown = false;
-        //     this.$refs.innerPage.isPullingDown = true;
-        //     await this.requestData();
-        //     this.$refs.innerPage.isPullingDown = false;
-        //     this.$refs.innerPage.finishPullDown();
-        // },
-
-        // async requestData() {
-        //     return new Promise(resolve => {
-        //         setTimeout(() => {
-        //             resolve();
-        //         }, 1000);
-        //     });
-        // },
+        async requestData() {
+            console.log(121)
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve();
+                }, 800);
+            });
+        },
     },
 
     mounted() {
@@ -81,9 +73,9 @@ export default {
 </script>
 
 <style lang='stylus' scoped>
-// .pulldown-list-item {
-//     padding: 15px 0;
-//     list-style: none;
-//     border-bottom: 1px solid #ccc;
-// }
+.pulldown-list-item {
+    padding: 15px 0;
+    list-style: none;
+    border-bottom: 1px solid #ccc;
+}
 </style>

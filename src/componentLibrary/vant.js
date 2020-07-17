@@ -31,11 +31,3 @@ Vue.use(Slider);
 // 文件上传
 import { Uploader } from 'vant';
 Vue.use(Uploader);
-
-// 列表
-// import { List } from 'vant';
-// Vue.use(List);
-
-// 下拉刷新
-// import { PullRefresh } from 'vant';
-// Vue.use(PullRefresh);
