@@ -2,15 +2,12 @@
 <template>
     <div>
         <Header :hasBack="false" :title="'我的'" />
-        <HomePage ref="homePage">
-            <div
-                class="scroll-item"
-                v-for="(item, index) of 100"
-                :key="index"
-                @click="clickHandler(item)"
-            >
-                {{ item }}
-            </div>
+        <HomePage ref="homePage" :pulldown="true" :pullup="true" :pullupTxt="true">
+            <ul class="pulldown-list">
+                <li v-for="i of 100" :key="i" class="pulldown-list-item">
+                    {{ `I am item ${i} ` }}
+                </li>
+            </ul>
         </HomePage>
     </div>
 </template>
@@ -30,12 +27,30 @@ export default {
     },
 
     methods: {
+        /**
+         * 页面相关事件处理函数--监听用户下拉动作
+         */
+        async onPullDownRefresh() {
+            console.log("onPullDownRefresh");
 
-    },
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve();
+                }, 800);
+            });
+        },
 
-    methods: {
-        clickHandler(item) {
-            this.$router.push({ name: "towPage", params: { info: item } });
+        /**
+         * 页面上拉触底事件的处理函数
+         */
+        async onReachBottom() {
+            console.log("onReachBottom");
+
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(false);
+                }, 1800);
+            });
         }
     },
 
@@ -59,20 +74,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.scroll-item {
-    height: 1rem;
-    line-height: 1rem;
-    font-size: 0.48rem;
-    font-weight: bold;
-    border-bottom: 0.02rem solid #eee;
-    text-align: center;
-
-    &:nth-child(2n) {
-        background-color: #f3f5f7;
-    }
-
-    &:nth-child(2n+1) {
-        background-color: #42b983;
-    }
+.pulldown-list-item {
+    padding: 15px 0;
+    list-style: none;
+    border-bottom: 1px solid #ccc;
 }
 </style>

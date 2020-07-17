@@ -2,7 +2,12 @@
 <template>
     <div>
         <Header :hasBack="true" :title="'Pulldown and Pullup'" />
-        <InnerPage ref="innerPage" :pulldown="true" :pullup="true" :pullupTxt="true">
+        <InnerPage
+            ref="innerPage"
+            :pulldown="true"
+            :pullup="true"
+            :pullupTxt="true"
+        >
             <ul class="pulldown-list">
                 <li v-for="i of 100" :key="i" class="pulldown-list-item">
                     {{ `I am item ${i} ` }}
@@ -15,7 +20,6 @@
 <script>
 import Header from "../components/Header";
 import InnerPage from "../components/InnerPage";
-import { Toast } from "vant";
 
 export default {
     name: "Refresh",
@@ -35,12 +39,10 @@ export default {
          * 页面相关事件处理函数--监听用户下拉动作
          */
         async onPullDownRefresh() {
-            console.log("onPullDownRefresh");
-
             return new Promise(resolve => {
-                setTimeout(() => {
-                    resolve();
-                }, 800);
+
+                // 数据请求完成后执行resolve(), 程序才会继续进行
+                resolve();
             });
         },
 
@@ -48,12 +50,10 @@ export default {
          * 页面上拉触底事件的处理函数
          */
         async onReachBottom() {
-            console.log("onReachBottom");
-
             return new Promise(resolve => {
-                setTimeout(() => {
-                    resolve(false);
-                }, 1800);
+
+                // 数据请求完成后执行resolve(), 程序才会继续进行。可在resolve方法中传入false参数，在没有更多可加载数据时使用
+                resolve(false);
             });
         }
     },

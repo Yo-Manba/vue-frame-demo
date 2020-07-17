@@ -162,7 +162,7 @@ export default {
     .scroll-content {
         min-height: calc(100% + 0.03rem);
 
-        // 下拉加载模块
+        // 下拉刷新模块
         .pulldown-wrapper {
             position: absolute;
             transform: translateY(-100%) translateZ(0);
@@ -172,7 +172,8 @@ export default {
             color: #999;
             box-sizing: border-box;
         }
-
+        
+        // 上拉加载模块
         .pullup-wrapper {
             padding: 20px;
             text-align: center;
