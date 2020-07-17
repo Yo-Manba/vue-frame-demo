@@ -5,20 +5,10 @@
         <HomePage ref="homePage">
             <div style="height: .01rem"></div>
             <van-cell class="cell" title="日历" is-link @click="toCalendar" />
-            <van-cell
-                class="cell"
-                title="数字键盘"
-                is-link
-                @click="toNumberKeyboard"
-            />
+            <van-cell class="cell" title="数字键盘" is-link @click="toNumberKeyboard" />
             <van-cell class="cell" title="滑块" is-link @click="toSlider" />
-            <van-cell
-                class="cell"
-                title="文件上传"
-                is-link
-                @click="toUploader"
-            />
-            <van-cell class="cell" title="单元格" is-link />
+            <van-cell class="cell" title="文件上传" is-link @click="toUploader" />
+            <van-cell class="cell" title="下拉刷新 上拉加载" is-link @click="toList" />
         </HomePage>
     </div>
 </template>
@@ -52,6 +42,10 @@ export default {
 
         toUploader() {
             this.$router.push({ name: "uploader" });
+        },
+
+        toList() {
+            this.$router.push({ name: "list" });
         }
     },
 

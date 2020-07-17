@@ -13,6 +13,7 @@ import Calendar from '../views/Calendar'
 import NumberKeyboard from '../views/NumberKeyboard'
 import Slider from '../views/Slider'
 import Uploader from '../views/Uploader'
+import List from '../views/List'
 
 
 // 三级页面
@@ -80,6 +81,13 @@ const routes = [
         path: '/uploader',
         name: 'uploader',
         component: Uploader,
+        meta: { index: 2 },
+        props: true
+    },
+    {
+        path: '/list',
+        name: 'list',
+        component: List,
         meta: { index: 2 },
         props: true
     },

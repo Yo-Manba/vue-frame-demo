@@ -74,7 +74,7 @@ export default {
     position: absolute;
     width: 100%;
     left: 0;
-    box-shadow: 0 0 .1rem #767676;
+    box-shadow: 0 0 .2rem #949494;
 }
 
 .slide-left-enter {
