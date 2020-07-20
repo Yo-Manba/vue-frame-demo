@@ -14,6 +14,7 @@ import NumberKeyboard from '../views/NumberKeyboard'
 import Slider from '../views/Slider'
 import Uploader from '../views/Uploader'
 import List from '../views/List'
+import Video from '../views/Video'
 
 
 // 三级页面
@@ -88,6 +89,13 @@ const routes = [
         path: '/list',
         name: 'list',
         component: List,
+        meta: { index: 2 },
+        props: true
+    },
+    {
+        path: '/video',
+        name: 'video',
+        component: Video,
         meta: { index: 2 },
         props: true
     },
