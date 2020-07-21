@@ -14,7 +14,7 @@ import NumberKeyboard from '../views/NumberKeyboard'
 import Slider from '../views/Slider'
 import Uploader from '../views/Uploader'
 import List from '../views/List'
-import Video from '../views/Video'
+import VideoPage from '../views/VideoPage'
 
 
 // 三级页面
@@ -93,9 +93,9 @@ const routes = [
         props: true
     },
     {
-        path: '/video',
-        name: 'video',
-        component: Video,
+        path: '/videoPage',
+        name: 'videoPage',
+        component: VideoPage,
         meta: { index: 2 },
         props: true
     },

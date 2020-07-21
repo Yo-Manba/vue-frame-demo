@@ -50,7 +50,7 @@ export default {
         },
 
         toVideo() {
-            this.$router.push({ name: "video" });
+            this.$router.push({ name: "videoPage" });
         }
     },
 
