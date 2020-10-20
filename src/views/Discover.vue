@@ -69,7 +69,7 @@ export default {
             // });
 
             axios({
-                url: "api/api/c/job/list",
+                url: "/api/c/job/list",
                 method: "post",
                 data: {
                     type: 2,
