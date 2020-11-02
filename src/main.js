@@ -9,6 +9,9 @@ import '@/assets/style/iconfont.css'
 
 Vue.config.productionTip = false
 
+console.log(process.env.VUE_APP_MODE, '具体环境');
+console.log(process.env);
+
 new Vue({
     router,
     store,

@@ -50,7 +50,7 @@ export default {
             //     page: 1,
             //     size: 20
             // }).then(res => {
-            //     console.log(res);
+            //     console.log(res);sss
             //     if (res.data.code === "1") {
             //         if (res.data.result) {
             //             var result = res.data.result;
@@ -59,7 +59,7 @@ export default {
             //                 this.$refs.homePage.bs.refresh();
             //             }, 0);
             //         } else {
-            //             console.log("无返回数据");
+            //             console.log("无返回数据");ssss
             //         }
             //     } else {
             //         console.log(res.data.msg);
@@ -67,9 +67,11 @@ export default {
             // }).catch(err => {
             //     console.error(err);
             // });
-
+      
+            console.log(`${process.env.VUE_APP_BASE_URL}/api/c/job/list`)
+            
             axios({
-                url: "/api/c/job/list",
+                url: `${process.env.VUE_APP_BASE_URL}/api/c/job/list`,
                 method: "post",
                 data: {
                     type: 2,
