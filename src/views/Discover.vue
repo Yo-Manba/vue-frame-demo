@@ -1,15 +1,9 @@
-
 <template>
     <div>
         <Header :hasBack="false" :title="'组件'" />
         <HomePage ref="homePage">
             <div style="height: .01rem"></div>
-            <div
-                class="scroll-item"
-                v-for="(item, index) of info"
-                :key="index"
-                @click="clickHandler(item)"
-            >
+            <div class="scroll-item" v-for="(item, index) of info" :key="index" @click="clickHandler(item)">
                 <div>{{ item.companyName }}</div>
                 <div>{{ item.education }}</div>
                 <div>{{ item.salary }}</div>
@@ -23,12 +17,13 @@
 </template>
 
 <script>
-import Header from "../components/Header";
-import HomePage from "../components/HomePage";
+import Header from '../components/Header';
+import HomePage from '../components/HomePage';
 import axios from "axios";
+import { apiAddress } from '@/request/api'; // 导入我们的api接口
 
 export default {
-    name: "Discover",
+    name: 'Discover',
     data() {
         return {
             info: []
@@ -41,7 +36,7 @@ export default {
 
     methods: {
         clickHandler(item) {
-            this.$router.push({ name: "towPage", params: { info: item } });
+            this.$router.push({ name: 'towPage', params: { info: item } });
         },
 
         getInfo() {
@@ -67,35 +62,44 @@ export default {
             // }).catch(err => {
             //     console.error(err);
             // });
-      
-            console.log(`${process.env.VUE_APP_BASE_URL}/api/c/job/list`)
-            
-            axios({
-                url: `${process.env.VUE_APP_BASE_URL}/api/c/job/list`,
-                method: "post",
-                data: {
-                    type: 2,
-                    page: 1,
-                    size: 20
-                }
+
+            // 调用api接口，并且提供了两个参数
+            apiAddress({
+                type: 2,
+                page: 1,
+                size: 20
             }).then(res => {
-                console.log(res);
-                if (res.data.code === "1") {
-                    if (res.data.result) {
-                        var result = res.data.result;
-                        this.info = result;
-                        setTimeout(() => {
-                            this.$refs.homePage.bs.refresh();
-                        }, 0);
-                    } else {
-                        console.log("无返回数据");
-                    }
-                } else {
-                    console.log(res.data.msg);
-                }
-            }).catch(err => {
-                console.error(err);
+                console.log(res)
             });
+
+            // console.log(`${process.env.VUE_APP_BASE_URL}/api/c/job/list`)
+
+            // axios({
+            //     url: `${process.env.VUE_APP_BASE_URL}/api/c/job/list`,
+            //     method: "post",
+            //     data: {
+            //         type: 2,
+            //         page: 1,
+            //         size: 20
+            //     }
+            // }).then(res => {
+            //     console.log(res);
+            //     if (res.data.code === "1") {
+            //         if (res.data.result) {
+            //             var result = res.data.result;
+            //             this.info = result;
+            //             setTimeout(() => {
+            //                 this.$refs.homePage.bs.refresh();
+            //             }, 0);
+            //         } else {
+            //             console.log("无返回数据");
+            //         }
+            //     } else {
+            //         console.log(res.data.msg);
+            //     }
+            // }).catch(err => {
+            //     console.error(err);
+            // });
         }
     },
 
@@ -114,13 +118,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.scroll-item {
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 0.8rem;
-}
-
-.scroll-item div {
-    margin-top: 0.1rem;
-}
+.scroll-item
+    width 90%
+    margin 0 auto
+    margin-top 0.8rem
+.scroll-item div
+    margin-top 0.1rem
 </style>
