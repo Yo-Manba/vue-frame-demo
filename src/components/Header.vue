@@ -21,6 +21,14 @@ export default {
 
     computed: {},
 
+    created() {
+        console.log("header created");
+    },
+
+    mounted() {
+        console.log("header mounted");
+    },
+
     methods: {
         goBack() {
             this.$router.go(-1)

@@ -57,11 +57,11 @@ export default {
     },
 
     created() {
-        console.log("created");
+        console.log("chat created");
     },
 
     mounted() {
-        console.log("mounted");
+        console.log("chat mounted");
         this.$refs.homePage.init();
     },
 

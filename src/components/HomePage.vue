@@ -56,6 +56,14 @@ export default {
 
     computed: {},
 
+    created() {
+        console.log("home created");
+    },
+
+    mounted() {
+        console.log("home mounted");
+    },
+
     methods: {
         init() {
             // 实例化better-scroll
