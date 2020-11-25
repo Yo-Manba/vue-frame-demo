@@ -2,33 +2,41 @@
 <template>
     <div class="header border-bottom">
         <span v-if="hasBack" class="iconfont iconfanhui" @click="goBack"></span>
-        <div class="title">{{title}}</div>
-        <InnerHeader />
+        <div class="title" @click="customEvent">{{ title }}</div>
+        <InnerHeader :text="this.text" @changeText="changeText" />
     </div>
 </template>
 
 <script>
-import InnerHeader from './InnerHeader'
+import event from './event.js'
+import InnerHeader from "./InnerHeader"
 
 export default {
     name: "Header",
-    props: [
-        'hasBack',
-        'title'
-    ],
+    props: ["hasBack", "title"],
     data() {
-        return {};
+        return {
+            text: 122
+        };
     },
 
     components: {
-        InnerHeader
+        InnerHeader,
     },
 
     computed: {},
 
     methods: {
         goBack() {
-            this.$router.go(-1)
+            this.$router.go(-1);
+        },
+
+        changeText() {
+            this.text = 133
+        },
+
+        customEvent() {
+            event.$emit('changeInnerPage')
         }
     },
 
@@ -57,39 +65,41 @@ export default {
     },
 
     beforeDestroy() {
-        console.log("header beforeDestroy")
+        console.log("header beforeDestroy");
     },
 
     destroyed() {
-        console.log("header destroyed")
-    }
+        console.log("header destroyed");
+    },
 };
 </script>
 
 <style lang='stylus' scoped>
-.header
-    height 1rem
-    background-color #f5f5f5
-    text-align center
-    display flex
-    align-items center
-    justify-content center
-    font-weight bold
-    position relative
+.header {
+    height: 1rem;
+    background-color: #f5f5f5;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    position: relative;
 
-    .iconfanhui
-        position absolute
-        top 50%
-        transform translateY(-50%)
-        left 0
-        width 1rem
-        height 1rem
-        display flex
-        align-items center
-        justify-content center
-        font-size .30rem
-    
-    .title
-        font-size .31rem
+    .iconfanhui {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        width: 1rem;
+        height: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.3rem;
+    }
 
+    .title {
+        font-size: 0.31rem;
+    }
+}
 </style>

@@ -1,22 +1,29 @@
 
 <template>
-    <div>
-        123
+    <div @click="chnageText">
+        {{ this.text }}
     </div>
 </template>
 
 <script>
 export default {
     name: "",
+    props: ["text"],
     data() {
-        return {};
+        return {
+            text1: this.text,
+        };
     },
 
     components: {},
 
     computed: {},
 
-    methods: {},
+    methods: {
+        chnageText() {
+            this.$emit('changeText')
+        },
+    },
 
     beforeCreate() {
         console.log("innerheader beforeCreate");
@@ -43,11 +50,11 @@ export default {
     },
 
     beforeDestroy() {
-        console.log("innerheader beforeDestroy")
+        console.log("innerheader beforeDestroy");
     },
 
     destroyed() {
-        console.log("innerheader destroyed")
+        console.log("innerheader destroyed");
     },
 
     activated() {},

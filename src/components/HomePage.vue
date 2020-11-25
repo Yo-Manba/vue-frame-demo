@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import event from "./event.js";
 import BScroll from "@better-scroll/core";
 import PullDown from "@better-scroll/pull-down";
 import Pullup from "@better-scroll/pull-up";
@@ -126,6 +127,10 @@ export default {
                 this.isPullUpLoad = false;
             }
             this.bs.finishPullUp();
+        },
+
+        change() {
+            console.log(6666)
         }
     },
 
@@ -143,6 +148,7 @@ export default {
 
     mounted() {
         console.log("home mounted");
+         event.$on("changeInnerPage", this.change);
     },
 
     beforeUpdate() {
@@ -157,6 +163,7 @@ export default {
         console.log("home beforeDestroy")
         console.log(this.bs)
         this.bs.destroy();
+        event.$off('changeInnerPage', this.change)
     },
 
     destroyed() {

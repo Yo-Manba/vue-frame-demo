@@ -12,11 +12,13 @@
                 @confirm="onConfirm"
             />
             <van-button @click="toThreePage">去三级页面</van-button>
+            <van-button @click="customEvent">绑定</van-button>
         </InnerPage>
     </div>
 </template>
 
 <script>
+import event from '../components/event'
 import Header from "../components/Header";
 import InnerPage from "../components/InnerPage";
 
@@ -50,6 +52,9 @@ export default {
         },
         toThreePage() {
             this.$router.push({ name: "threePage", params: { info: "" } });
+        },
+        customEvent() {
+            event.$emit('changeInnerPage')
         }
     },
 
