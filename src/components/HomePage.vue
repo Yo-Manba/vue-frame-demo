@@ -56,14 +56,6 @@ export default {
 
     computed: {},
 
-    created() {
-        console.log("home created");
-    },
-
-    mounted() {
-        console.log("home mounted");
-    },
-
     methods: {
         init() {
             // 实例化better-scroll
@@ -137,14 +129,44 @@ export default {
         }
     },
 
-    activated() {
-        // console.log("activated");
-        this.bs.refresh();
+    beforeCreate() {
+        console.log("home beforeCreate");
+    },
+
+    created() {
+        console.log("home created");
+    },
+
+    beforeMount() {
+        console.log("home beforeMount");
+    },
+
+    mounted() {
+        console.log("home mounted");
+    },
+
+    beforeUpdate() {
+        console.log("home beforeUpdate");
+    },
+
+    updated() {
+        console.log("home updated");
     },
 
     beforeDestroy() {
-        // console.log("beforeDestroy")
+        console.log("home beforeDestroy")
+        console.log(this.bs)
         this.bs.destroy();
+    },
+
+    destroyed() {
+        console.log("home destroyed")
+    },
+
+    activated() {
+        console.log("home activated");
+        console.log(this.bs)
+        this.bs.refresh();
     }
 };
 </script>

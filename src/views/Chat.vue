@@ -56,22 +56,42 @@ export default {
         }
     },
 
+    beforeCreate() {
+        console.log("chat beforeCreate");
+    },
+
     created() {
         console.log("chat created");
+    },
+
+    beforeMount() {
+        console.log("chat beforeMount");
     },
 
     mounted() {
         console.log("chat mounted");
         this.$refs.homePage.init();
     },
+    
+    beforeUpdate() {
+        console.log("chat beforeUpdate");
+    },
 
-    activated() {
-        console.log("activated");
+    updated() {
+        console.log("chat updated");
     },
 
     beforeDestroy() {
-        console.log("beforeDestroy");
-    }
+        console.log("chat beforeDestroy")
+    },
+
+    destroyed() {
+        console.log("chat destroyed")
+    },
+
+    activated() {
+        console.log("chat activated");
+    },
 };
 </script>
 

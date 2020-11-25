@@ -4,14 +4,15 @@
         <Header :hasBack="true" :title="'Calendar'" />
         <InnerPage ref="innerPage">
             <van-cell title="选择单个日期" :value="date" @click="show = true" />
+            <van-calendar
+                v-model="show"
+                :show-confirm="false"
+                :min-date="minDate"
+                :max-date="maxDate"
+                @confirm="onConfirm"
+            />
+            <van-button @click="toThreePage">去三级页面</van-button>
         </InnerPage>
-        <van-calendar
-            v-model="show"
-            :show-confirm="false"
-            :min-date="minDate"
-            :max-date="maxDate"
-            @confirm="onConfirm"
-        />
     </div>
 </template>
 
@@ -26,51 +27,86 @@ export default {
             show: false,
             date: "",
             minDate: new Date(2019, 0, 1),
-            maxDate: new Date(2021, 0, 31)
+            maxDate: new Date(2021, 0, 31),
         };
     },
 
     components: {
         Header,
-        InnerPage
+        InnerPage,
     },
 
     computed: {},
 
     methods: {
         formatDate(date) {
-            return `${date.getFullYear()}/${date.getMonth() +
-                1}/${date.getDate()}`;
+            return `${date.getFullYear()}/${
+                date.getMonth() + 1
+            }/${date.getDate()}`;
         },
         onConfirm(date) {
             this.show = false;
             this.date = this.formatDate(date);
+        },
+        toThreePage() {
+            this.$router.push({ name: "threePage", params: { info: "" } });
         }
     },
 
+    beforeCreate() {
+        console.log("calendar beforeCreate");
+    },
+
+    created() {
+        console.log("calendar created");
+    },
+
+    beforeMount() {
+        console.log("calendar beforeMount");
+    },
+
     mounted() {
+        console.log("calendar mounted");
         this.$refs.innerPage.init();
     },
 
-    activated() {},
+    beforeUpdate() {
+        console.log("calendar beforeUpdate");
+    },
+
+    updated() {
+        console.log("calendar updated");
+    },
+
+    beforeDestroy() {
+        console.log("calendar beforeDestroy");
+    },
+
+    destroyed() {
+        console.log("calendar destroyed");
+    },
+
+    activated() {
+        console.log("calendar activated");
+    },
 
     beforeRouteEnter(to, from, next) {
-        if (from.path === "/下级页面的路径") {
-            next(vm => {
-                vm.$store.commit("delComponent", "当前页面组件名称");
+        if (from.path === "/threePage") {
+            next((vm) => {
+                vm.$store.commit("delComponent", "Calendar");
             });
         }
         next();
     },
 
     beforeRouteLeave(to, from, next) {
-        if (to.path === "/下级页面的路径") {
-            this.$store.commit("addComponent", "当前页面组件名称");
+        if (to.path === "/threePage") {
+            this.$store.commit("addComponent", "Calendar");
         }
         setTimeout(() => {
             next();
         }, 0);
-    }
+    },
 };
 </script>
 

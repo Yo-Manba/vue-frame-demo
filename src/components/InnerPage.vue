@@ -129,21 +129,44 @@ export default {
         }
     },
 
+    beforeCreate() {
+        console.log("innerHome beforeCreate");
+    },
+
     created() {
-        // console.log("created")
+        console.log("innerHome created");
     },
 
-    mouted() {
-        // console.log("mounted");
+    beforeMount() {
+        console.log("innerHome beforeMount");
     },
 
-    activated() {
-        // console.log("activated");
+    mounted() {
+        console.log("innerHome mounted");
+    },
+
+    beforeUpdate() {
+        console.log("innerHome beforeUpdate");
+    },
+
+    updated() {
+        console.log("innerHome updated");
     },
 
     beforeDestroy() {
-        // console.log("beforeDestroy")
+        console.log("innerHome beforeDestroy")
+        console.log(this.bs)
         this.bs.destroy();
+    },
+
+    destroyed() {
+        console.log("innerHome destroyed")
+    },
+
+    activated() {
+        console.log("innerHome activated");
+        console.log(this.bs)
+        this.bs.refresh();
     }
 };
 </script>

@@ -35,17 +35,41 @@ export default {
         }
     },
 
+    beforeCreate() {
+        console.log("threePage beforeCreate");
+    },
+
+    created() {
+        console.log("threePage created");
+    },
+
+    beforeMount() {
+        console.log("threePage beforeMount");
+    },
+
     mounted() {
-        console.log("mounted");
+        console.log("threePage mounted");
         this.$refs.innerPage.init();
     },
 
-    activated() {
-        console.log("activated");
+    beforeUpdate() {
+        console.log("threePage beforeUpdate");
+    },
+
+    updated() {
+        console.log("threePage updated");
     },
 
     beforeDestroy() {
-        console.log("beforeDestroy");
+        console.log("threePage beforeDestroy");
+    },
+
+    destroyed() {
+        console.log("threePage destroyed");
+    },
+
+    activated() {
+        console.log("threePage activated");
     },
 
     beforeRouteEnter(to, from, next) {

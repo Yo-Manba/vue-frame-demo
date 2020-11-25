@@ -3,10 +3,13 @@
     <div class="header border-bottom">
         <span v-if="hasBack" class="iconfont iconfanhui" @click="goBack"></span>
         <div class="title">{{title}}</div>
+        <InnerHeader />
     </div>
 </template>
 
 <script>
+import InnerHeader from './InnerHeader'
+
 export default {
     name: "Header",
     props: [
@@ -17,22 +20,48 @@ export default {
         return {};
     },
 
-    components: {},
+    components: {
+        InnerHeader
+    },
 
     computed: {},
 
+    methods: {
+        goBack() {
+            this.$router.go(-1)
+        }
+    },
+
+    beforeCreate() {
+        console.log("header beforeCreate");
+    },
+
     created() {
         console.log("header created");
+    },
+
+    beforeMount() {
+        console.log("header beforeMount");
     },
 
     mounted() {
         console.log("header mounted");
     },
 
-    methods: {
-        goBack() {
-            this.$router.go(-1)
-        }
+    beforeUpdate() {
+        console.log("header beforeUpdate");
+    },
+
+    updated() {
+        console.log("header updated");
+    },
+
+    beforeDestroy() {
+        console.log("header beforeDestroy")
+    },
+
+    destroyed() {
+        console.log("header destroyed")
     }
 };
 </script>
