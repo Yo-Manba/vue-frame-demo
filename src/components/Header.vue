@@ -36,7 +36,7 @@ export default {
         },
 
         customEvent() {
-            event.$emit('changeInnerPage')
+            event.$emit('changeInnerPage', '8888')
         }
     },
 

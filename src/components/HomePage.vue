@@ -129,7 +129,8 @@ export default {
             this.bs.finishPullUp();
         },
 
-        change() {
+        change(e) {
+            console.log(e)
             console.log(6666)
         }
     },

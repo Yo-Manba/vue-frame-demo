@@ -54,7 +54,7 @@ export default {
             this.$router.push({ name: "threePage", params: { info: "" } });
         },
         customEvent() {
-            event.$emit('changeInnerPage')
+            event.$emit('changeInnerPage', '99999')
         }
     },
 
