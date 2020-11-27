@@ -10,6 +10,7 @@
                     <div v-show="!isPullingDown"><span>刷新成功</span></div>
                 </div>
             </div>
+            
             <!-- 页面插槽 -->
             <slot />
 

@@ -10,6 +10,12 @@
             <van-cell class="cell" title="文件上传" is-link @click="toUploader" />
             <van-cell class="cell" title="下拉刷新 上拉加载" is-link @click="toList" />
             <van-cell class="cell" title="视频" is-link @click="toVideo" />
+
+            <Son>
+                <template v-slot="slotProps">
+                    {{slotProps.slotData.title}}
+                </template>
+            </Son>
         </HomePage>
     </div>
 </template>
@@ -17,6 +23,7 @@
 <script>
 import Header from "../components/Header";
 import HomePage from "../components/HomePage";
+import Son from "../components/Son"
 
 export default {
     name: "Contacts",
@@ -25,7 +32,8 @@ export default {
     },
     components: {
         Header,
-        HomePage
+        HomePage,
+        Son
     },
 
     methods: {
