@@ -38,23 +38,22 @@ export default {
     },
 
     beforeRouteEnter(to, from, next) {
-        if (from.path === "/threePage") {
+        if (to.meta.index < from.meta.index) {
             next(vm => {
-                // 通过 `vm` 访问组件实例
-                vm.$store.commit("delComponent", "TowPage");
+                vm.$store.commit("delComponent", to.name);
             });
         }
         next();
     },
 
     beforeRouteLeave(to, from, next) {
-        if (to.path === "/threePage") {
-            this.$store.commit("addComponent", "TowPage");
+        if (from.meta.index !== 1 && to.meta.index > from.meta.index) {
+            this.$store.commit("addComponent", from.name);
         }
         setTimeout(() => {
             next();
         }, 0);
-    }
+    },
 };
 </script>
 

@@ -38,7 +38,7 @@ export default {
 
     methods: {
         toCalendar() {
-            this.$router.push({ name: "calendar", params: { info: "" } });
+            this.$router.push({ name: "Calendar", params: { info: "" } });
         },
 
         toNumberKeyboard() {

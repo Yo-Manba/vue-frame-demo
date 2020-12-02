@@ -37,6 +37,24 @@ export default {
 
     beforeDestroy() {
         console.log("beforeDestroy");
+    },
+
+    beforeRouteEnter(to, from, next) {
+        if (to.meta.index < from.meta.index) {
+            next(vm => {
+                vm.$store.commit("delComponent", to.name);
+            });
+        }
+        next();
+    },
+
+    beforeRouteLeave(to, from, next) {
+        if (from.meta.index !== 1 && to.meta.index > from.meta.index) {
+            this.$store.commit("addComponent", from.name);
+        }
+        setTimeout(() => {
+            next();
+        }, 0);
     }
 };
 </script>

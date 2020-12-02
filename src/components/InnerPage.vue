@@ -175,7 +175,7 @@ export default {
         console.log("innerHome activated");
         console.log(this.bs);
         this.bs.refresh();
-    },
+    }
 };
 </script>
 

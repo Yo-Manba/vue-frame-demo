@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import event from '../components/event'
+import event from "../components/event";
 import Header from "../components/Header";
 import InnerPage from "../components/InnerPage";
 
@@ -51,11 +51,11 @@ export default {
             this.date = this.formatDate(date);
         },
         toThreePage() {
-            this.$router.push({ name: "threePage", params: { info: "" } });
+            this.$router.push({ name: "ThreePage", params: { info: "" } });
         },
         customEvent() {
-            event.$emit('changeInnerPage', '99999')
-        }
+            event.$emit("changeInnerPage", "99999");
+        },
     },
 
     beforeCreate() {
@@ -96,17 +96,17 @@ export default {
     },
 
     beforeRouteEnter(to, from, next) {
-        if (from.path === "/threePage") {
+        if (to.meta.index < from.meta.index) {
             next((vm) => {
-                vm.$store.commit("delComponent", "Calendar");
+                vm.$store.commit("delComponent", to.name);
             });
         }
         next();
     },
 
     beforeRouteLeave(to, from, next) {
-        if (to.path === "/threePage") {
-            this.$store.commit("addComponent", "Calendar");
+        if (from.meta.index !== 1 && to.meta.index > from.meta.index) {
+            this.$store.commit("addComponent", from.name);
         }
         setTimeout(() => {
             next();

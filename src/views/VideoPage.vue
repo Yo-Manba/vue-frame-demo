@@ -68,22 +68,22 @@ export default {
     activated() {},
 
     beforeRouteEnter(to, from, next) {
-        if (from.path === "/下级页面的路径") {
+        if (to.meta.index < from.meta.index) {
             next(vm => {
-                vm.$store.commit("delComponent", "当前页面组件名称");
+                vm.$store.commit("delComponent", to.name);
             });
         }
         next();
     },
 
     beforeRouteLeave(to, from, next) {
-        if (to.path === "/下级页面的路径") {
-            this.$store.commit("addComponent", "当前页面组件名称");
+        if (from.meta.index !== 1 && to.meta.index > from.meta.index) {
+            this.$store.commit("addComponent", from.name);
         }
         setTimeout(() => {
             next();
         }, 0);
-    }
+    },
 };
 </script>
 

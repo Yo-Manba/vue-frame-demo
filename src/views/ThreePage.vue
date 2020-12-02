@@ -26,13 +26,13 @@ export default {
     },
     components: {
         Header,
-        InnerPage
+        InnerPage,
     },
 
     methods: {
         toFourPage(item) {
-            this.$router.push({ name: "fourPage", params: { info: item } });
-        }
+            this.$router.push({ name: "FourPage", params: { info: item } });
+        },
     },
 
     beforeCreate() {
@@ -73,23 +73,22 @@ export default {
     },
 
     beforeRouteEnter(to, from, next) {
-        if (from.path === "/fourPage") {
+        if (to.meta.index < from.meta.index) {
             next(vm => {
-                // 通过 `vm` 访问组件实例
-                vm.$store.commit("delComponent", "ThreePage");
+                vm.$store.commit("delComponent", to.name);
             });
         }
         next();
     },
 
     beforeRouteLeave(to, from, next) {
-        if (to.path === "/fourPage") {
-            this.$store.commit("addComponent", "ThreePage");
+        if (from.meta.index !== 1 && to.meta.index > from.meta.index) {
+            this.$store.commit("addComponent", from.name);
         }
         setTimeout(() => {
             next();
         }, 0);
-    }
+    },
 };
 </script>
 

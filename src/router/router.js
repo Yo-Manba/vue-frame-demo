@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'
 
 // 一级页面
 import Chat from '../views/Chat'
@@ -59,7 +60,7 @@ const routes = [
     },
     {
         path: '/calendar',
-        name: 'calendar',
+        name: 'Calendar',
         component: Calendar,
         meta: { index: 2 },
         props: true
@@ -103,7 +104,7 @@ const routes = [
     // 三级页面
     {
         path: '/threePage',
-        name: 'threePage',
+        name: 'ThreePage',
         component: ThreePage,
         meta: { index: 3 },
         props: true
@@ -113,7 +114,7 @@ const routes = [
     // 四级页面
     {
         path: '/fourPage',
-        name: 'fourPage',
+        name: 'FourPage',
         component: FourPage,
         meta: { index: 4 },
         props: true
@@ -135,5 +136,22 @@ const router = new VueRouter({
         }
     }
 })
+
+// router.beforeEach((to, from, next) => {
+//     console.log("to", to);
+//     console.log("from", from);
+
+//     if (to.meta.index < from.meta.index) {
+//         store.commit("delComponent", to.name);
+//     }
+//     next();
+// })
+
+// router.afterEach((to, from) => {
+//     if (from.meta.index !== 1 && to.meta.index > from.meta.index) {
+//         store.commit("addComponent", from.name);
+//     }
+//     console.log(store.state.catch_components);
+// })
 
 export default router
