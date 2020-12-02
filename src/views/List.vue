@@ -20,9 +20,10 @@
 <script>
 import Header from "../components/Header";
 import InnerPage from "../components/InnerPage";
+import { addComponent, delComponent } from "../keepAliveContro/keepAliveContro";
 
 export default {
-    name: "Refresh",
+    name: "List",
     data() {
         return {};
     },
@@ -62,25 +63,7 @@ export default {
         this.$refs.innerPage.init();
     },
 
-    activated() {},
-
-    beforeRouteEnter(to, from, next) {
-        if (to.meta.index < from.meta.index) {
-            next(vm => {
-                vm.$store.commit("delComponent", to.name);
-            });
-        }
-        next();
-    },
-
-    beforeRouteLeave(to, from, next) {
-        if (from.meta.index !== 1 && to.meta.index > from.meta.index) {
-            this.$store.commit("addComponent", from.name);
-        }
-        setTimeout(() => {
-            next();
-        }, 0);
-    },
+    activated() {}
 };
 </script>
 

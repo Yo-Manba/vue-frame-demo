@@ -18,9 +18,10 @@
 </template>
 
 <script>
-import event from "../components/event";
+import event from "../event/event"
 import Header from "../components/Header";
 import InnerPage from "../components/InnerPage";
+import { addComponent, delComponent } from "../keepAliveContro/keepAliveContro";
 
 export default {
     name: "Calendar",
@@ -96,21 +97,11 @@ export default {
     },
 
     beforeRouteEnter(to, from, next) {
-        if (to.meta.index < from.meta.index) {
-            next((vm) => {
-                vm.$store.commit("delComponent", to.name);
-            });
-        }
-        next();
+        delComponent(to, from, next, "/threePage");
     },
 
     beforeRouteLeave(to, from, next) {
-        if (from.meta.index !== 1 && to.meta.index > from.meta.index) {
-            this.$store.commit("addComponent", from.name);
-        }
-        setTimeout(() => {
-            next();
-        }, 0);
+        addComponent(to, from, next, "/threePage");
     },
 };
 </script>

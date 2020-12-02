@@ -3,7 +3,12 @@
     <div>
         <Header :hasBack="true" :title="'四级页面'" />
         <InnerPage ref="innerPage">
-            <div class="scroll-item" v-for="(item, index) of 100" :key="index">
+            <div
+                class="scroll-item"
+                v-for="(item, index) of 100"
+                :key="index"
+                @click="toTowPage(item)"
+            >
                 {{ item }}四级页面
             </div>
         </InnerPage>
@@ -13,6 +18,7 @@
 <script>
 import Header from "../components/Header";
 import InnerPage from "../components/InnerPage";
+import { addComponent, delComponent } from "../keepAliveContro/keepAliveContro";
 
 export default {
     name: "FourPage",
@@ -21,10 +27,15 @@ export default {
     },
     components: {
         Header,
-        InnerPage
+        InnerPage,
     },
 
-    methods: {},
+    methods: {
+        toTowPage(item) {
+            this.$router.push({ name: "TowPage", params: { info: item } });
+            console.log(this)
+        }
+    },
 
     mounted() {
         console.log("mounted");
@@ -40,22 +51,12 @@ export default {
     },
 
     beforeRouteEnter(to, from, next) {
-        if (to.meta.index < from.meta.index) {
-            next(vm => {
-                vm.$store.commit("delComponent", to.name);
-            });
-        }
-        next();
+        delComponent(to, from, next, "/towPage");
     },
 
     beforeRouteLeave(to, from, next) {
-        if (from.meta.index !== 1 && to.meta.index > from.meta.index) {
-            this.$store.commit("addComponent", from.name);
-        }
-        setTimeout(() => {
-            next();
-        }, 0);
-    }
+        addComponent(to, from, next, "/towPage");
+    },
 };
 </script>
 

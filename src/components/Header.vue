@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import event from './event.js'
+import event from "../event/event"
 import InnerHeader from "./InnerHeader"
 
 export default {

@@ -6,7 +6,7 @@ import axios from 'axios';
 import {
     Toast
 } from 'vant';
-import store from '../store/index'
+import store from '../store/store'
 
 // 环境的切换
 if (process.env.NODE_ENV == 'development') {

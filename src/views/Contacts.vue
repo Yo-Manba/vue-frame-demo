@@ -42,23 +42,23 @@ export default {
         },
 
         toNumberKeyboard() {
-            this.$router.push({ name: "numberKeyboard" });
+            this.$router.push({ name: "NumberKeyboard" });
         },
 
         toSlider() {
-            this.$router.push({ name: "slider" });
+            this.$router.push({ name: "Slider" });
         },
 
         toUploader() {
-            this.$router.push({ name: "uploader" });
+            this.$router.push({ name: "Uploader" });
         },
 
         toList() {
-            this.$router.push({ name: "list" });
+            this.$router.push({ name: "List" });
         },
 
         toVideo() {
-            this.$router.push({ name: "videoPage" });
+            this.$router.push({ name: "VideoPage" });
         }
     },
 

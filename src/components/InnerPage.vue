@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import event from "./event.js";
-import BScroll from "@better-scroll/core";
-import PullDown from "@better-scroll/pull-down";
-import Pullup from "@better-scroll/pull-up";
+import event from "../event/event"
+import BScroll from "@better-scroll/core"
+import PullDown from "@better-scroll/pull-down"
+import Pullup from "@better-scroll/pull-up"
 
 BScroll.use(PullDown);
 BScroll.use(Pullup);

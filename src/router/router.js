@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '../store'
+import store from '../store/store'
 
 // 一级页面
 import Chat from '../views/Chat'
@@ -53,7 +53,7 @@ const routes = [
     // 二级页面
     {
         path: '/towPage',
-        name: 'towPage',
+        name: 'TowPage',
         component: TowPage,
         meta: { index: 2 },
         props: true
@@ -67,35 +67,35 @@ const routes = [
     },
     {
         path: '/numberKeyboard',
-        name: 'numberKeyboard',
+        name: 'NumberKeyboard',
         component: NumberKeyboard,
         meta: { index: 2 },
         props: true
     },
     {
         path: '/slider',
-        name: 'slider',
+        name: 'Slider',
         component: Slider,
         meta: { index: 2 },
         props: true
     },
     {
         path: '/uploader',
-        name: 'uploader',
+        name: 'Uploader',
         component: Uploader,
         meta: { index: 2 },
         props: true
     },
     {
         path: '/list',
-        name: 'list',
+        name: 'List',
         component: List,
         meta: { index: 2 },
         props: true
     },
     {
         path: '/videoPage',
-        name: 'videoPage',
+        name: 'VideoPage',
         component: VideoPage,
         meta: { index: 2 },
         props: true
@@ -136,22 +136,5 @@ const router = new VueRouter({
         }
     }
 })
-
-// router.beforeEach((to, from, next) => {
-//     console.log("to", to);
-//     console.log("from", from);
-
-//     if (to.meta.index < from.meta.index) {
-//         store.commit("delComponent", to.name);
-//     }
-//     next();
-// })
-
-// router.afterEach((to, from) => {
-//     if (from.meta.index !== 1 && to.meta.index > from.meta.index) {
-//         store.commit("addComponent", from.name);
-//     }
-//     console.log(store.state.catch_components);
-// })
 
 export default router

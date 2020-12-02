@@ -10,7 +10,7 @@
                     <div v-show="!isPullingDown"><span>刷新成功</span></div>
                 </div>
             </div>
-            
+
             <!-- 页面插槽 -->
             <slot />
 
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import event from "./event.js";
+import event from "../event/event";
 import BScroll from "@better-scroll/core";
 import PullDown from "@better-scroll/pull-down";
 import Pullup from "@better-scroll/pull-up";
@@ -38,7 +38,7 @@ BScroll.use(Pullup);
 
 export default {
     name: "HomePage",
-    props: ["pulldown", "pullup", 'pullupTxt'],
+    props: ["pulldown", "pullup", "pullupTxt"],
     data() {
         return {
             beforePullDown: true,
@@ -50,7 +50,7 @@ export default {
 
             isPullUpLoad: false,
             pullUpTit: "上拉加载更多",
-            haveResult: true
+            haveResult: true,
         };
     },
 
@@ -71,11 +71,11 @@ export default {
                 pullDownRefresh: this.pulldown
                     ? {
                           threshold: this.THRESHOLD,
-                          stop: this.STOP
+                          stop: this.STOP,
                       }
                     : false,
 
-                pullUpLoad: this.pullup ? true : false
+                pullUpLoad: this.pullup ? true : false,
             });
 
             // 监听下拉刷新
@@ -102,7 +102,7 @@ export default {
 
         async finishPullDown() {
             const stopTime = this.TIME_STOP;
-            await new Promise(resolve => {
+            await new Promise((resolve) => {
                 setTimeout(() => {
                     this.bs.finishPullDown();
                     resolve();
@@ -116,7 +116,7 @@ export default {
 
         // 上拉加载模块****************************************************************************************************************
         async pullingUpHandler() {
-            console.log(this.haveResult)
+            console.log(this.haveResult);
             if (this.haveResult) {
                 this.isPullUpLoad = true;
                 let result = await this.$parent.onReachBottom();
@@ -131,9 +131,9 @@ export default {
         },
 
         change(e) {
-            console.log(e)
-            console.log(6666)
-        }
+            console.log(e);
+            console.log(6666);
+        },
     },
 
     beforeCreate() {
@@ -150,7 +150,7 @@ export default {
 
     mounted() {
         console.log("home mounted");
-         event.$on("changeInnerPage", this.change);
+        event.$on("changeInnerPage", this.change);
     },
 
     beforeUpdate() {
@@ -162,21 +162,21 @@ export default {
     },
 
     beforeDestroy() {
-        console.log("home beforeDestroy")
-        console.log(this.bs)
+        console.log("home beforeDestroy");
+        console.log(this.bs);
         this.bs.destroy();
-        event.$off('changeInnerPage', this.change)
+        event.$off("changeInnerPage", this.change);
     },
 
     destroyed() {
-        console.log("home destroyed")
+        console.log("home destroyed");
     },
 
     activated() {
         console.log("home activated");
-        console.log(this.bs)
+        console.log(this.bs);
         this.bs.refresh();
-    }
+    },
 };
 </script>
 
@@ -203,7 +203,7 @@ export default {
             color: #999;
             box-sizing: border-box;
         }
-        
+
         // 上拉加载模块
         .pullup-wrapper {
             padding: 20px;
