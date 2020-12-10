@@ -5,7 +5,7 @@ import store from '../store/store'
  * @param {*} to 组件前置守卫参数
  * @param {*} from 组件前置守卫参数
  * @param {*} next 组件前置守卫参数
- * @param {*} nextPagePath 下级页面的页面路径
+ * @param {String} nextPagePath 下级页面的页面路径
  */
 export function delComponent(to, from, next, nextPagePath) {
     if (from.path === nextPagePath) {
@@ -31,7 +31,7 @@ export function delComponent(to, from, next, nextPagePath) {
  * @param {*} to 组件后置守卫参数
  * @param {*} from 组件后置守卫参数
  * @param {*} next 组件后置守卫参数
- * @param {*} nextPagePath 下级页面的页面路径
+ * @param {String} nextPagePath 下级页面的页面路径
  */
 export function addComponent(to, from, next, nextPagePath) {
     if (to.path === nextPagePath) {

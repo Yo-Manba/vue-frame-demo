@@ -8,21 +8,18 @@ import {
 } from 'vant';
 import store from '../store/store'
 
-// 环境的切换
-if (process.env.NODE_ENV == 'development') {
-    axios.defaults.baseURL = '';
-} else if (process.env.NODE_ENV == 'production') {
-    axios.defaults.baseURL = 'https://qym.jjyapp.com';
-}
-
-// 请求超时时间
-axios.defaults.timeout = 10000;
+// create an axios instance
+const service = axios.create({
+    baseURL: process.env.NODE_ENV === 'development' ? '' : 'https://qym.jjyapp.com', // url = base url + request url
+    // withCredentials: true, // send cookies when cross-domain requests
+    timeout: 8000 // request timeout
+})
 
 // post请求头
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
 // 请求拦截器
-axios.interceptors.request.use(
+service.interceptors.request.use(
     config => {
         // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
         // 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
@@ -36,7 +33,7 @@ axios.interceptors.request.use(
 );
 
 // 响应拦截器
-axios.interceptors.response.use(
+service.interceptors.response.use(
     response => {
         if (response.status === 200) {
             return Promise.resolve(response);
@@ -109,7 +106,7 @@ axios.interceptors.response.use(
  */
 export function get(url, params) {
     return new Promise((resolve, reject) => {
-        axios.get(url, {
+        service.get(url, {
                 params: params
             })
             .then(res => {
@@ -127,7 +124,7 @@ export function get(url, params) {
  */
 export function post(url, params) {
     return new Promise((resolve, reject) => {
-        axios.post(url, params)
+        service.post(url, params)
             .then(res => {
                 resolve(res.data);
             })
