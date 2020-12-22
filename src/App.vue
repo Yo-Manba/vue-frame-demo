@@ -4,7 +4,7 @@
         <!-- 一级页面视口(包含Header高度) -->
         <transition :name="transitionName">
             <keep-alive :include="include">
-                <router-view class="onePage" />
+                <router-view class="routerView" />
             </keep-alive>
         </transition>
 
@@ -107,7 +107,7 @@ body {
 }
 
 // 一级页面视口(包含Header高度)
-.onePage {
+.routerView {
     height: 100%;
     box-sizing: border-box;
 }

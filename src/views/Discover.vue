@@ -2,8 +2,13 @@
     <div>
         <Header :hasBack="false" :title="'组件'" />
         <HomePage ref="homePage">
-            <div style="height: .01rem"></div>
-            <div class="scroll-item" v-for="(item, index) of info" :key="index" @click="clickHandler(item)">
+            <div style="height: 0.01rem"></div>
+            <div
+                class="scroll-item"
+                v-for="(item, index) of info"
+                :key="index"
+                @click="clickHandler(item)"
+            >
                 <div>{{ item.companyName }}</div>
                 <div>{{ item.education }}</div>
                 <div>{{ item.salary }}</div>
@@ -11,32 +16,32 @@
                 <div>{{ item.townshipName }}</div>
                 <div>{{ item.years }}</div>
             </div>
-            <div style="height: .8rem"></div>
+            <div style="height: 0.8rem"></div>
         </HomePage>
     </div>
 </template>
 
 <script>
-import Header from '../components/Header';
-import HomePage from '../components/HomePage';
+import Header from "../components/Header";
+import HomePage from "../components/HomePage";
 import axios from "axios";
-import { apiAddress } from '@/request/api'; // 导入我们的api接口
+import { apiAddress } from "@/request/api"; // 导入我们的api接口
 
 export default {
-    name: 'Discover',
+    name: "Discover",
     data() {
         return {
-            info: []
+            info: [],
         };
     },
     components: {
         Header,
-        HomePage
+        HomePage,
     },
 
     methods: {
         clickHandler(item) {
-            this.$router.push({ name: 'towPage', params: { info: item } });
+            this.$router.push({ name: "towPage", params: { info: item } });
         },
 
         getInfo() {
@@ -67,9 +72,25 @@ export default {
             apiAddress({
                 type: 2,
                 page: 1,
-                size: 20
-            }).then(res => {
-                console.log(res)
+                size: 20,
+            }).then((res) => {
+                console.log(res);
+                if (res.code === "1") {
+                    if (res.result) {
+                        var result = res.result;
+                        this.info = result;
+                        setTimeout(() => {
+                            this.$refs.homePage.bs.refresh();
+                        }, 0);
+                    } else {
+                        console.log("无返回数据");
+                        ssss;
+                    }
+                } else {
+                    console.log(res.data.msg);
+                }
+            }).catch(err => {
+                console.error(err);
             });
 
             // console.log(`${process.env.VUE_APP_BASE_URL}/api/c/job/list`)
@@ -100,7 +121,7 @@ export default {
             // }).catch(err => {
             //     console.error(err);
             // });
-        }
+        },
     },
 
     created() {
@@ -113,15 +134,18 @@ export default {
 
     activated() {},
 
-    beforeDestroy() {}
+    beforeDestroy() {},
 };
 </script>
 
 <style lang="stylus" scoped>
-.scroll-item
-    width 90%
-    margin 0 auto
-    margin-top 0.8rem
-.scroll-item div
-    margin-top 0.1rem
+.scroll-item {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 0.8rem;
+}
+
+.scroll-item div {
+    margin-top: 0.1rem;
+}
 </style>
