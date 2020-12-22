@@ -6,7 +6,7 @@
         </slot>
     </van-cell> -->
     <div>
-        son1
+        son2
     </div>
 </template>
 

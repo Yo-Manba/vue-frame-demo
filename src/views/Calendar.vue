@@ -13,6 +13,17 @@
             />
             <van-button @click="toThreePage">去三级页面</van-button>
             <van-button @click="customEvent">绑定</van-button>
+            
+            <br />
+            <br />
+            <br />
+
+            <van-button @click="currentComponent = Son1">Son1组件</van-button>
+            <van-button @click="currentComponent = Son2">Son2组件</van-button>
+            <keep-alive>
+                <component :is="currentComponent"></component>
+            </keep-alive>
+
         </InnerPage>
     </div>
 </template>
@@ -21,6 +32,9 @@
 import event from "../event/event"
 import Header from "../components/Header";
 import InnerPage from "../components/InnerPage";
+import Son1 from "../components/Son";
+import Son2 from "../components/Son2";
+
 import { addComponent, delComponent } from "../keepAliveContro/keepAliveContro";
 
 export default {
@@ -31,12 +45,15 @@ export default {
             date: "",
             minDate: new Date(2019, 0, 1),
             maxDate: new Date(2021, 0, 31),
+            currentComponent: Son1,
+            Son1,
+            Son2
         };
     },
 
     components: {
         Header,
-        InnerPage,
+        InnerPage
     },
 
     computed: {},

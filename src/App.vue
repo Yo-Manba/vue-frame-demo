@@ -3,9 +3,9 @@
     <div id="app">
         <!-- 一级页面视口(包含Header高度) -->
         <transition :name="transitionName">
-            <keep-alive :include="include"
-                ><router-view class="onePage"
-            /></keep-alive>
+            <keep-alive :include="include">
+                <router-view class="onePage" />
+            </keep-alive>
         </transition>
 
         <!-- 底部导航栏 -->
@@ -75,13 +75,13 @@ export default {
     transform: translate3d(100%, 0, 0);
 }
 
-.slide-left-leave-active {
-    transform: translate3d(-35%, 0, 0);
-}
-
 .slide-right-enter {
     transform: translate3d(-35%, 0, 0);
     z-index: -1;
+}
+
+.slide-left-leave-active {
+    transform: translate3d(-35%, 0, 0);
 }
 
 .slide-right-leave-active {

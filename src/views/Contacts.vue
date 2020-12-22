@@ -11,11 +11,11 @@
             <van-cell class="cell" title="下拉刷新 上拉加载" is-link @click="toList" />
             <van-cell class="cell" title="视频" is-link @click="toVideo" />
 
-            <Son>
+            <!-- <Son>
                 <template v-slot="slotProps">
                     {{slotProps.slotData.title}}
                 </template>
-            </Son>
+            </Son> -->
         </HomePage>
     </div>
 </template>
